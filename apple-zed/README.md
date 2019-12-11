@@ -15,3 +15,5 @@ Query 接受数据查询 controller层,与AO同一层
 
 INFO 数据库对应信息实体封装  不用DO的是防止服务间调用误解
 
+RequestEntity (org.springframework.http) 用这个实体进行接受数据,返回的响应码在Headers 的 General中
+
