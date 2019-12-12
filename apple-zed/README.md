@@ -17,3 +17,10 @@ INFO 数据库对应信息实体封装  不用DO的是防止服务间调用误�
 
 RequestEntity (org.springframework.http) 用这个实体进行接受数据,返回的响应码在Headers 的 General中
 
+## 开发线
+0、pom依赖
+1、RBAC 基础
+2、SpringBoot+Security+JWT
+3、Spring Cloud
+4、Redis
+5、OSS
