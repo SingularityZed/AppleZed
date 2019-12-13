@@ -6,7 +6,6 @@
 
     <artifactId>zed-admin</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
 
     <name>zed-admin</name>
     <description>系统管理模块</description>

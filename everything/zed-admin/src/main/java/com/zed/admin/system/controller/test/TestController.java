@@ -1,4 +1,4 @@
-package com.zed.admin.system.controller;
+package com.zed.admin.system.controller.test;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

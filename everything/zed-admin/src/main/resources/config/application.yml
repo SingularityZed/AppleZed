@@ -1,11 +1,13 @@
 server:
   port: 7777
 
-#spring:
-#  freemarker:
-#    check-template-location: false
-#  profiles:
-#    active: dev
+spring:
+  freemarker:
+    check-template-location: false
+  profiles:
+    active: dev
+  application:
+    name: zed-admin
 #  jackson:
 #    time-zone: GMT+8
 #  data:

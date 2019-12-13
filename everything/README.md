@@ -40,3 +40,8 @@ add ,delete,update,query  不要出现edit
 @Validated 校验采用 ，不要用 @Valid
 
 
+## 遇到问题
+#### 2019/12/13  
+在启动类所在的pom.xml配置中加了 ' <packaging>pom</packaging> ' 导致配置文件 application.yml 读取不到。
+解决地址:https://www.jb51.net/article/171586.htm
+扩展:maven中的packaging标签 https://www.cnblogs.com/seven717/p/9802813.html
