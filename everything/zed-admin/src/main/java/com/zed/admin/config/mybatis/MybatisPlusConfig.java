@@ -2,18 +2,23 @@ package com.zed.admin.config.mybatis;
 
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.pagination.optimize.JsqlParserCountOptimize;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 
 /**
  * MybatisPlusConfig
  *
- * @Author: wang_ycong(Tel : 16602526966)
+ * <p>
+ * sql性能分析插件3.2就移除了
+ * </p>
+ *
+ * @Author: zed
  * @Date: 2019/12/13 11:19
  */
 @Configuration
-public class MybatisPlusConfig  {
+@MapperScan("com.zed.admin.system.mapper*")
+public class MybatisPlusConfig {
 
     /**
      * 分页插件,自动识别数据库类型
