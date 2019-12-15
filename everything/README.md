@@ -1,3 +1,16 @@
+## 待办
+
+基础RBAC 
+
+generator
+
+swagger-ui
+
+
+
+
+
+
 ## 重建项目
 2019/12/12  pom依赖问题重建一次
 
@@ -35,6 +48,16 @@ manager 管理层 可以调用多个service 主要是不常用来与Dao层交互
 service 层 直接与Dao层交互
 Dao 与数据库交互
 
+查询：分页是必须的事情，然后后面再说查询的权限限制
+
+新增：controller 调用manager或者service ,校验数据是否符合，比如重复之类，
+
+编辑：要编辑的数据是否存在，编辑的校验，比如重复
+
+删除：软删除，逻辑不可删除
+
+
+
 ## 规范
 add ,delete,update,query  不要出现edit
 @Validated 校验采用 ，不要用 @Valid
@@ -45,3 +68,7 @@ add ,delete,update,query  不要出现edit
 在启动类所在的pom.xml配置中加了 ' <packaging>pom</packaging> ' 导致配置文件 application.yml 读取不到。
 解决地址:https://www.jb51.net/article/171586.htm
 扩展:maven中的packaging标签 https://www.cnblogs.com/seven717/p/9802813.html
+
+
+## 版本管理
+暂时不需要分，具体再想办法

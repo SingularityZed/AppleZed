@@ -1,10 +1,27 @@
 package com.zed.admin.system.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.zed.admin.common.base.entity.BaseEntity;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
+
 /**
  * User
  *
- * @Author: wang_ycong(Tel : 16602526966)
+ * @Author: zed
  * @Date: 2019/12/13 17:00
  */
-public class User {
+@Data
+@EqualsAndHashCode(callSuper = true)
+@Accessors(chain = true)
+@TableName(value = "user")
+public class User extends BaseEntity<User> {
+
+    private String username;
+    private String password;
+    private String telephone;
+    private Boolean enabled;
+
+
 }
