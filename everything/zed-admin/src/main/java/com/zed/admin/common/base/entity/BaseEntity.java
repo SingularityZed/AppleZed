@@ -21,6 +21,13 @@ import java.util.Date;
 @Accessors(chain = true)
 public abstract class BaseEntity<T extends Model<?>> extends Model<T> {
 
+    public final static String UPDATE_TIME = "update_time";
+    public final static String CREATE_TIME = "create_time";
+    public final static String UPDATE_BY = "update_by";
+    public final static String CREATE_BY = "create_by";
+    public final static String REMARK = "remark";
+    public final static String IS_DELETED = "is_deleted";
+
     /**
      * 实体编号（唯一标识）
      */

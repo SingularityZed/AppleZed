@@ -53,9 +53,11 @@ Dao 与数据库交互
 
 
 ## 规范
-add ,delete,update,query  不要出现edit
+add ,delete,update,query  不要出现edit ，前端显示编辑，但是后端必更新
 @Validated 校验采用 ，不要用 @Valid
 
+接口API定义，开放前端为 api/service名称/版本/具体业务
+接口API定义，服务间调用 inner/service名称/版本/具体业务
 
 ## 遇到问题
 #### 2019/12/13  
