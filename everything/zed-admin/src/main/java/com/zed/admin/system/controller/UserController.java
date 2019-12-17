@@ -1,9 +1,11 @@
 package com.zed.admin.system.controller;
 
 import com.zed.admin.common.base.PageParam;
+import com.zed.admin.common.utils.AutoMapperUtil;
 import com.zed.admin.system.pojo.ao.UserAddAO;
 import com.zed.admin.system.pojo.ao.UserQueryAO;
 import com.zed.admin.system.pojo.ao.UserUpdateAO;
+import com.zed.admin.system.pojo.dto.UserDTO;
 import com.zed.admin.system.service.UserService;
 import com.zed.admin.system.verify.UserVerify;
 import io.swagger.annotations.Api;
@@ -25,7 +27,7 @@ import org.springframework.web.bind.annotation.*;
 @Api(tags = "用户管理")
 @RestController
 @RequestMapping("/api/zed-admin/user")
-public class UserController {
+public class UserController  {
 
     @Autowired
     private UserService userService;
@@ -48,7 +50,9 @@ public class UserController {
     @ApiOperation("新增用户")
     @PostMapping("/add")
     public ResponseEntity add(@Validated @RequestBody UserAddAO addAO) {
-        userVerify.verifyRepeat(addAO);
+        // 转换
+        UserDTO dto = AutoMapperUtil.toPOJO(addAO,UserDTO.class);
+        userVerify.verifyRepeat(dto);
         userService.add(addAO);
         return new ResponseEntity(HttpStatus.OK);
     }

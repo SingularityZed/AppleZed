@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.zed.admin.common.base.entity.BaseEntity;
 import com.zed.admin.common.constant.CommonConstant;
 import com.zed.admin.common.utils.Tools;
 import lombok.Data;

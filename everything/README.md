@@ -42,6 +42,8 @@ manager 管理层 可以调用多个service 主要是不常用来与Dao层交互
 service 层 直接与Dao层交互
 Dao 与数据库交互
 
+verify类与manager类可能会互相调用，但是这是随着业务复杂度必然会出现的，不影响建立类的初衷与排查
+
 查询：分页是必须的事情，然后后面再说查询的权限限制
 
 新增：controller 调用manager或者service ,校验数据是否符合，比如重复之类，

@@ -1,6 +1,7 @@
 package com.zed.admin.common.utils;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.springframework.beans.BeanUtils;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -84,6 +85,22 @@ public class AutoMapperUtil {
         mappingList(src.getRecords(), list, targetClass);
         target.setRecords(list);
         return target;
+    }
+
+    /**
+     * POJO转换输出POJO
+     * 使用BeanUtils工具
+     *
+     * @param t
+     * @param kcz
+     * @param <T>
+     * @param <K>
+     * @return
+     */
+    public static <T, K> K toPOJO(T t, Class<K> kcz) {
+        K k = BeanUtils.instantiateClass(kcz);
+        BeanUtils.copyProperties(t, k);
+        return k;
     }
 
 }
