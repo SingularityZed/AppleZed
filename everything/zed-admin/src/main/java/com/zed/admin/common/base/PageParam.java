@@ -38,11 +38,11 @@ public class PageParam implements Serializable {
      */
     public <T extends BaseEntity> QueryWrapper<T> buildTimePage() {
         QueryWrapper<T> queryWrapper = new QueryWrapper<>();
-        queryWrapper.ge(StringUtils.isNotBlank(createTimeFrom), BaseEntity.CREATE_TIME, createTimeFrom);
-        queryWrapper.le(StringUtils.isNotBlank(createTimeFrom), BaseEntity.CREATE_TIME, createTimeTo);
-        queryWrapper.ge(StringUtils.isNotBlank(updateTimeFrom), BaseEntity.UPDATE_TIME, updateTimeFrom);
-        queryWrapper.le(StringUtils.isNotBlank(updateTimeTo), BaseEntity.UPDATE_TIME, updateTimeTo);
-        queryWrapper.eq(BaseEntity.IS_DELETED, false);
+        queryWrapper.lambda().eq(BaseEntity::getIsDeleted, false)
+                .ge(StringUtils.isNotBlank(createTimeFrom), BaseEntity::getCreateTime, createTimeFrom)
+                .le(StringUtils.isNotBlank(createTimeTo), BaseEntity::getCreateTime, createTimeTo)
+                .ge(StringUtils.isNotBlank(updateTimeFrom), BaseEntity::getUpdateTime, updateTimeFrom)
+                .le(StringUtils.isNotBlank(updateTimeTo), BaseEntity::getUpdateTime, updateTimeTo);
         return queryWrapper;
     }
 
