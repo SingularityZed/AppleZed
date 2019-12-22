@@ -6,8 +6,9 @@ import com.zed.admin.system.pojo.ao.UserAddAO;
 import com.zed.admin.system.pojo.ao.UserQueryAO;
 import com.zed.admin.system.pojo.ao.UserUpdateAO;
 import com.zed.admin.system.pojo.dto.UserDTO;
+import com.zed.admin.system.pojo.verify.UserVerify;
+import com.zed.admin.system.pojo.vo.UserVO;
 import com.zed.admin.system.service.UserService;
-import com.zed.admin.system.verify.UserVerify;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +28,7 @@ import org.springframework.web.bind.annotation.*;
 @Api(tags = "用户管理")
 @RestController
 @RequestMapping("/api/zed-admin/user")
-public class UserController  {
+public class UserController {
 
     @Autowired
     private UserService userService;
@@ -37,37 +38,39 @@ public class UserController  {
     @ApiOperation("分页查询用户列表")
     @GetMapping("/pageList")
     public ResponseEntity searchPage(PageParam pageParam, UserQueryAO queryAO) {
-        return new ResponseEntity<>(userService.getPageList(pageParam, queryAO), HttpStatus.OK);
+        UserDTO dto = AutoMapperUtil.toPOJO(queryAO, UserDTO.class);
+        return new ResponseEntity<>(userService.getPageList(pageParam, dto), HttpStatus.OK);
     }
 
     @ApiOperation("获取用户详情")
     @GetMapping("/{id}")
     public ResponseEntity get(@PathVariable Long id) {
-        userService.getById(id);
-        return new ResponseEntity(HttpStatus.OK);
+        UserVO vo = userService.getUserById(id);
+        return new ResponseEntity<>(vo, HttpStatus.OK);
     }
 
     @ApiOperation("新增用户")
     @PostMapping("/add")
     public ResponseEntity add(@Validated @RequestBody UserAddAO addAO) {
         // 转换
-        UserDTO dto = AutoMapperUtil.toPOJO(addAO,UserDTO.class);
+        UserDTO dto = AutoMapperUtil.toPOJO(addAO, UserDTO.class);
         userVerify.verifyRepeat(dto);
-        userService.add(addAO);
+        userService.addUser(dto);
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @ApiOperation("修改用户")
     @PutMapping("/update")
     public ResponseEntity update(@Validated @RequestBody UserUpdateAO updateAO) {
-        userService.update(updateAO);
+        UserDTO dto = AutoMapperUtil.toPOJO(updateAO, UserDTO.class);
+        userService.updateUser(dto);
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @ApiOperation("删除用户")
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable Long id) {
-        userService.delete(id);
+        userService.deleteUser(id);
         return new ResponseEntity(HttpStatus.OK);
     }
 }

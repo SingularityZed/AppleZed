@@ -13,7 +13,7 @@ import lombok.Getter;
 @Getter
 public class VerifyException extends RuntimeException {
 
-    private Integer code = StatusCode.VERIFY_410000.value();
+    private Integer code = StatusCode.VERIFY_410000.getValue();
 
     private Exception e;
 

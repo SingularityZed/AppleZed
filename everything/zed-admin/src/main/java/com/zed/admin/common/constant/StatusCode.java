@@ -4,7 +4,7 @@ package com.zed.admin.common.constant;
  * @author zed
  * @date 2019/3/25 15:23
  **/
-public enum StatusCode {
+public enum StatusCode implements BaseEnum{
 
     /**
      * 成功
@@ -30,8 +30,8 @@ public enum StatusCode {
      * 客户端验证
      */
     VERIFY_410000(410000, "参数校验异常"),
-    VERIFY_410001(410001, "数据不存在"),
-    VERIFY_410002(410002, "数据已存在"),
+    VERIFY_410001(410001, "操作数据不存在"),
+    VERIFY_410002(410002, "操作数据已存在"),
     VERIFY_410003(410003, "字段不能为空"),
     VERIFY_410004(410004, "字段应该为空"),
     VERIFY_410005(410005, "正则校验错误"),
@@ -60,11 +60,14 @@ public enum StatusCode {
         this.message = message;
     }
 
-    public int value() {
+
+    @Override
+    public Integer getValue() {
         return this.code;
     }
 
-    public String message() {
+    @Override
+    public String getMessage() {
         return this.message;
     }
 }

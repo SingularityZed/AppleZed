@@ -1,5 +1,6 @@
 package com.zed.admin.system.pojo.dto;
 
+import com.zed.admin.common.base.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -14,7 +15,7 @@ import java.io.Serializable;
  */
 @Data
 @ApiModel("用户DTO")
-public class UserDTO implements Serializable {
+public class UserDTO extends BaseEntity implements Serializable {
 
     @ApiModelProperty("用户名称")
     private String username;

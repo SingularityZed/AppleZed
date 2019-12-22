@@ -11,7 +11,7 @@ import lombok.Getter;
 @Getter
 public class DaoException extends RuntimeException {
 
-    private Integer code = StatusCode.SERVER_540000.value();
+    private Integer code = StatusCode.SERVER_540000.getValue();
 
     private Exception e;
 

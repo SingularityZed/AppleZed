@@ -25,4 +25,9 @@ public class User extends BaseEntity<User> {
     private Boolean enabled;
 
 
+    // TODO
+    private Integer gender;
+    private String email;
+
+
 }

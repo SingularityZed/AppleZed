@@ -1,4 +1,4 @@
-package com.zed.admin.system.verify;
+package com.zed.admin.system.pojo.verify;
 
 import com.zed.admin.common.constant.StatusCode;
 import com.zed.admin.common.exception.VerifyException;
@@ -27,7 +27,7 @@ public class UserVerify {
     public void verifyRepeat(UserDTO dto) {
         UserVerifyDTO verifyDTO = userService.verifyRepeat(dto);
         // Class must not be null
-        Assert.notNull(verifyDTO, StatusCode.VERIFY_410001.message());
+        Assert.notNull(verifyDTO, StatusCode.VERIFY_410001.getMessage());
         if (verifyDTO.getCountUsername() > 0) {
             throw new VerifyException(AdminEnum.USER_NAME_REPEAT);
         }

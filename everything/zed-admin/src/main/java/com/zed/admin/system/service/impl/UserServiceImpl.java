@@ -1,60 +1,117 @@
 package com.zed.admin.system.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zed.admin.common.base.PageParam;
+import com.zed.admin.common.constant.StatusCode;
+import com.zed.admin.common.exception.DaoException;
+import com.zed.admin.common.utils.AutoMapperUtil;
 import com.zed.admin.system.entity.User;
 import com.zed.admin.system.mapper.UserMapper;
-import com.zed.admin.system.pojo.ao.UserAddAO;
-import com.zed.admin.system.pojo.ao.UserQueryAO;
-import com.zed.admin.system.pojo.ao.UserUpdateAO;
 import com.zed.admin.system.pojo.dto.UserDTO;
 import com.zed.admin.system.pojo.dto.UserVerifyDTO;
 import com.zed.admin.system.pojo.vo.UserVO;
 import com.zed.admin.system.service.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 /**
- * UserService
+ * UserServiceImpl
  *
- * @Author: wang_ycong(Tel : 16602526966)
- * @Date: 2019/12/15 14:02
+ * @author zed
+ * @date 2019/12/15 14:02
  */
 @Slf4j
 @Service
-public class UserServiceImpl implements UserService {
-    @Autowired
-    private UserMapper userMapper;
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
 
+    /**
+     * 分页查询
+     *
+     * @param pageParam
+     * @param dto
+     * @return
+     */
     @Override
-    public Page<UserVO> getPageList(PageParam pageParam, UserQueryAO queryAO) {
-        return null;
+    public Page getPageList(PageParam pageParam, UserDTO dto) {
+        Page<User> page = pageParam.buildPage();
+        Page<User> userPage = this.page(page,
+                new LambdaQueryWrapper<User>()
+                        .eq(User::getIsDeleted, false)
+                        .like(StringUtils.isNotBlank(dto.getUsername()), User::getUsername, dto.getUsername())
+                        .like(StringUtils.isNotBlank(dto.getUsername()), User::getTelephone, dto.getTelephone())
+                        .select(User::getEnabled, User::getEmail, User::getGender)
+                        .orderByDesc(User::getUpdateTime)
+                        .orderByDesc(User::getId));
+        return AutoMapperUtil.mappingPage(userPage, UserVO.class);
     }
 
+    /**
+     * 获取详情
+     *
+     * @param id
+     * @return
+     */
     @Override
-    public void getById(Long id) {
-
+    public UserVO getUserById(Long id) {
+        UserVO vo = new UserVO();
+        User user = this.getOne(new LambdaQueryWrapper<User>().eq(User::getId, id).eq(User::getIsDeleted, false));
+        if (user != null) {
+            AutoMapperUtil.mapping(user, vo);
+        } else {
+            throw new DaoException(StatusCode.VERIFY_410001);
+        }
+        return vo;
     }
 
+    /**
+     * 新增
+     *
+     * @param dto
+     */
     @Override
-    public void add(UserAddAO addAO) {
-
+    public void addUser(UserDTO dto) {
+        User user = new User();
+        AutoMapperUtil.mapping(dto, user);
+        this.saveOrUpdate(user);
     }
 
+    /**
+     * 更新
+     *
+     * @param dto
+     */
     @Override
-    public void update(UserUpdateAO updateAO) {
-
+    public void updateUser(UserDTO dto) {
+        this.getUserById(dto.getId());
+        User user = new User();
+        AutoMapperUtil.mapping(dto, user);
+        this.saveOrUpdate(user);
     }
 
+    /**
+     * 删除
+     *
+     * @param id
+     */
     @Override
-    public void delete(Long id) {
-
+    public void deleteUser(Long id) {
+        this.getUserById(id);
+        this.update(new LambdaUpdateWrapper<User>().eq(User::getId, id).set(User::getIsDeleted, true));
     }
 
+    /**
+     * 校验
+     *
+     * @param dto
+     * @return
+     */
     @Override
     public UserVerifyDTO verifyRepeat(UserDTO dto) {
-        return  userMapper.verifyRepeat(dto);
+        return baseMapper.verifyRepeat(dto);
     }
 }

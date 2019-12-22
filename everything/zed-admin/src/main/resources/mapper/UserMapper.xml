@@ -22,8 +22,9 @@ select * from user
 
 
     </select>
-    <select id="verifyRepeat" resultType="com.zed.admin.system.pojo.dto.UserDTO">
+    <select id="verifyRepeat" resultType="com.zed.admin.system.pojo.dto.UserVerifyDTO">
 
 
     </select>
+    <select id="getPageList" resultType="com.zed.admin.system.pojo.vo.UserVO"></select>
 </mapper>

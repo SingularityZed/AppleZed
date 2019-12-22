@@ -67,6 +67,8 @@ add ,delete,update,query  不要出现edit ，前端显示编辑，但是后端�
 解决地址:https://www.jb51.net/article/171586.htm
 扩展:maven中的packaging标签 https://www.cnblogs.com/seven717/p/9802813.html
 
+LambdaQueryChainWrapper  链式查询 就是多表查询
+eg:https://mybatis.plus/guide/crud-interface.html#count
 
 ## 版本管理
 暂时不需要分，具体再想办法

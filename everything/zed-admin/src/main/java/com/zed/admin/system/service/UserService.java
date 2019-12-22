@@ -1,11 +1,9 @@
 package com.zed.admin.system.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.zed.admin.common.base.PageParam;
 import com.zed.admin.system.entity.User;
-import com.zed.admin.system.pojo.ao.UserAddAO;
-import com.zed.admin.system.pojo.ao.UserQueryAO;
-import com.zed.admin.system.pojo.ao.UserUpdateAO;
 import com.zed.admin.system.pojo.dto.UserDTO;
 import com.zed.admin.system.pojo.dto.UserVerifyDTO;
 import com.zed.admin.system.pojo.vo.UserVO;
@@ -16,18 +14,52 @@ import com.zed.admin.system.pojo.vo.UserVO;
  * @author zed
  * @date 2019/12/12 19:12
  */
-public interface UserService {
+public interface UserService extends IService<User> {
 
-    Page<UserVO> getPageList(PageParam pageParam, UserQueryAO queryAO);
+    /**
+     * 分页查询
+     *
+     * @param pageParam
+     * @param dto
+     * @return
+     */
+    Page getPageList(PageParam pageParam, UserDTO dto);
 
-    void getById(Long id);
+    /**
+     * 获取详情
+     *
+     * @param id
+     * @return
+     */
+    UserVO getUserById(Long id);
 
-    void add(UserAddAO addAO);
+    /**
+     * 新增
+     *
+     * @param dto
+     */
+    void addUser(UserDTO dto);
 
-    void update(UserUpdateAO updateAO);
+    /**
+     * 更新
+     *
+     * @param dto
+     */
+    void updateUser(UserDTO dto);
 
-    void delete(Long id);
+    /**
+     * 删除
+     *
+     * @param id
+     */
+    void deleteUser(Long id);
 
 
+    /**
+     * 校验
+     *
+     * @param dto
+     * @return
+     */
     UserVerifyDTO verifyRepeat(UserDTO dto);
 }

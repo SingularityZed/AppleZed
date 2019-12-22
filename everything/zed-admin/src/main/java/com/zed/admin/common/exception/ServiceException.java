@@ -13,7 +13,7 @@ import lombok.Getter;
 @Getter
 public class ServiceException extends RuntimeException {
 
-    private Integer code = StatusCode.SERVER_530000.value();
+    private Integer code = StatusCode.SERVER_530000.getValue();
 
     private Exception e;
 

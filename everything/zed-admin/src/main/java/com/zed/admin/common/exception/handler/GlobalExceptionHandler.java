@@ -94,7 +94,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException e) {
         // 打印堆栈信息
         log.error(ThrowableUtil.getStackTrace(e));
-        return buildResponseEntity(ApiError.error(StatusCode.CLIENT_400009.value(), e.getMessage()));
+        return buildResponseEntity(ApiError.error(StatusCode.CLIENT_400009.getValue(), e.getMessage()));
     }
 
     /**
@@ -107,7 +107,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity handleMissingServletRequestPartException(MissingServletRequestPartException e) {
         // 打印堆栈信息
         log.error(ThrowableUtil.getStackTrace(e));
-        return buildResponseEntity(ApiError.error(StatusCode.VERIFY_410003.value(), e.getMessage()));
+        return buildResponseEntity(ApiError.error(StatusCode.VERIFY_410003.getValue(), e.getMessage()));
     }
 
     /**
@@ -146,7 +146,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity handleSQLException(SQLException e) {
         // 打印堆栈信息
         log.error(ThrowableUtil.getStackTrace(e));
-        return buildResponseEntity(ApiError.error(StatusCode.SERVER_540000.value(), e.getMessage()));
+        return buildResponseEntity(ApiError.error(StatusCode.SERVER_540000.getValue(), e.getMessage()));
     }
 
     /**
@@ -159,7 +159,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity handlerHttpMessageNotReadableException(HttpMessageNotReadableException e) {
         // 打印堆栈信息
         log.error(ThrowableUtil.getStackTrace(e));
-        return buildResponseEntity(ApiError.error(StatusCode.CLIENT_400010.value(), e.getMessage()));
+        return buildResponseEntity(ApiError.error(StatusCode.CLIENT_400010.getValue(), e.getMessage()));
     }
 
     /**
@@ -172,7 +172,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity fileUploadBase$FileSizeLimitExceededException(FileUploadBase.FileSizeLimitExceededException e) {
         // 打印堆栈信息
         log.error(ThrowableUtil.getStackTrace(e));
-        return buildResponseEntity(ApiError.error(StatusCode.CLIENT_400011.value(), e.getMessage()));
+        return buildResponseEntity(ApiError.error(StatusCode.CLIENT_400011.getValue(), e.getMessage()));
     }
 
     /**
@@ -185,7 +185,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity handlerIllegalArgumentException(IllegalArgumentException e) {
         // 打印堆栈信息
         log.error(ThrowableUtil.getStackTrace(e));
-        return buildResponseEntity(ApiError.error(StatusCode.VERIFY_410008.value(), e.getMessage()));
+        return buildResponseEntity(ApiError.error(StatusCode.VERIFY_410008.getValue(), e.getMessage()));
     }
 
     /**
@@ -198,7 +198,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity controllerException(ControllerException e) {
         // 打印堆栈信息
         log.error(ThrowableUtil.getStackTrace(e));
-        return buildResponseEntity(ApiError.error(StatusCode.SERVER_510000.value(), e.getMessage()));
+        return buildResponseEntity(ApiError.error(StatusCode.SERVER_510000.getValue(), e.getMessage()));
     }
 
     /**
@@ -211,7 +211,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity managerException(ManagerException e) {
         // 打印堆栈信息
         log.error(ThrowableUtil.getStackTrace(e));
-        return buildResponseEntity(ApiError.error(StatusCode.SERVER_520000.value(), e.getMessage()));
+        return buildResponseEntity(ApiError.error(StatusCode.SERVER_520000.getValue(), e.getMessage()));
     }
 
     /**
@@ -224,7 +224,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity serviceException(ServiceException e) {
         // 打印堆栈信息
         log.error(ThrowableUtil.getStackTrace(e));
-        return buildResponseEntity(ApiError.error(StatusCode.SERVER_530000.value(), e.getMessage()));
+        return buildResponseEntity(ApiError.error(StatusCode.SERVER_530000.getValue(), e.getMessage()));
     }
 
     /**
@@ -237,7 +237,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity daoException(DaoException e) {
         // 打印堆栈信息
         log.error(ThrowableUtil.getStackTrace(e));
-        return buildResponseEntity(ApiError.error(StatusCode.SERVER_540000.value(), e.getMessage()));
+        return buildResponseEntity(ApiError.error(StatusCode.SERVER_540000.getValue(), e.getMessage()));
     }
 
     /**

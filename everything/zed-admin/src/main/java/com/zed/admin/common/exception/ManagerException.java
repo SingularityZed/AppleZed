@@ -13,7 +13,7 @@ import lombok.Getter;
 @Getter
 public class ManagerException extends RuntimeException {
 
-    private Integer code= StatusCode.SERVER_520000.value();
+    private Integer code= StatusCode.SERVER_520000.getValue();
 
     private Exception e;
 
