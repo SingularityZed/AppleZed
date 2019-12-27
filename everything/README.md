@@ -61,6 +61,9 @@ add ,delete,update,query  不要出现edit ，前端显示编辑，但是后端�
 接口API定义，开放前端为 api/service名称/版本/具体业务
 接口API定义，服务间调用 inner/service名称/版本/具体业务
 
+@Autowired 尽量通过set方法注入 避免引入不到 
+
+
 ## 遇到问题
 #### 2019/12/13  
 在启动类所在的pom.xml配置中加了 ' <packaging>pom</packaging> ' 导致配置文件 application.yml 读取不到。

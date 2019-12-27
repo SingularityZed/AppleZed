@@ -1,5 +1,7 @@
 package com.zed.generator.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zed.common.base.PageParam;
 import com.zed.generator.config.GenConfig;
 import com.zed.generator.info.ColumnInfo;
 
@@ -13,18 +15,20 @@ public interface GeneratorService {
 
     /**
      * 查询数据库元数据
-     * @param name 表名
-     * @param startEnd 分页参数
+     * @param pageParam 分页参数
+     * @param database 数据库
+     * @param tableName 表名
      * @return /
      */
-    Object getTables(String name, int[] startEnd);
+    Page getTables(PageParam pageParam, String database,String tableName);
 
     /**
      * 得到数据表的元数据
-     * @param name 表名
+     * @param database 数据库
+     * @param tableName 表名
      * @return /
      */
-    Object getColumns(String name);
+    Page getColumns( String database,String tableName);
 
     /**
      * 生成代码

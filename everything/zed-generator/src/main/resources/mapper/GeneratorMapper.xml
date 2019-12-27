@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zed.generator.mapper.GeneratorMapper">
+
+    <!--查询数据库元数据-->
+    <select id="getTables" resultType="com.zed.generator.info.TableInfo">
+        select table_name, engine, table_collation, table_comment, create_time
+        from information_schema.TABLES
+        <where>
+            <choose>
+                <when test="database != null and database != ''">
+                    table_schema = #{database}
+                </when>
+                <otherwise>
+                    table_schema=(select database())
+                </otherwise>
+            </choose>
+            <if test="tableName != null and tableName != ''">
+                and table_name like concat('%',#{tableName},'%')
+            </if>
+        </where>
+        order by create_time desc
+    </select>
+
+    <!--得到数据表的元数据-->
+    <select id="getColumns" resultType="com.zed.generator.info.ColumnInfo">
+        select column_name, is_nullable, data_type, column_comment, column_key, extra
+        from information_schema.COLUMNS
+        where TABLE_SCHEMA = #{schema}
+          and TABLE_NAME = #{tableName}
+        order by ordinal_position
+    </select>
+
+
+</mapper>
