@@ -9,6 +9,7 @@
 
     <name>zed-admin</name>
     <description>系统管理模块</description>
+    <packaging>jar</packaging>
 
     <parent>
         <artifactId>everything</artifactId>
@@ -20,11 +21,11 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
+            <groupId>com.zed</groupId>
+            <artifactId>zed-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
-
     </dependencies>
 
 

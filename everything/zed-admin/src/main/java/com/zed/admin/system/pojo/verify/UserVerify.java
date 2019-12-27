@@ -1,11 +1,11 @@
 package com.zed.admin.system.pojo.verify;
 
-import com.zed.admin.common.constant.StatusCode;
-import com.zed.admin.common.exception.VerifyException;
-import com.zed.admin.system.constant.AdminEnum;
+import com.zed.admin.constant.AdminEnum;
 import com.zed.admin.system.pojo.dto.UserDTO;
 import com.zed.admin.system.pojo.dto.UserVerifyDTO;
 import com.zed.admin.system.service.UserService;
+import com.zed.common.constant.StatusCode;
+import com.zed.common.exception.VerifyException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,23 +1,20 @@
-package com.zed.admin.system.pojo.dto;
+package com.zed.common.base;
 
-import com.zed.common.base.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 
 /**
- * UserDTO
+ * QueryAO
  *
- * @author zed
- * @date 2019/12/12 19:12
+ * @Author: wang_ycong(Tel : 16602526966)
+ * @Date: 2019/12/12 19:12
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
-@ApiModel("用户DTO")
-public class UserDTO extends BaseEntity implements Serializable {
+@ApiModel("USER_ADD:用户新增请求实体")
+public class QueryAO implements Serializable {
 
     @ApiModelProperty("用户名称")
     private String username;

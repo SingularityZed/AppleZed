@@ -2,11 +2,11 @@ package com.zed.admin.system.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.zed.admin.common.base.PageParam;
 import com.zed.admin.system.entity.User;
 import com.zed.admin.system.pojo.dto.UserDTO;
 import com.zed.admin.system.pojo.dto.UserVerifyDTO;
 import com.zed.admin.system.pojo.vo.UserVO;
+import com.zed.common.base.PageParam;
 
 /**
  * UserService

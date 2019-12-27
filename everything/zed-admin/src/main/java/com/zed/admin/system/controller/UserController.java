@@ -1,7 +1,5 @@
 package com.zed.admin.system.controller;
 
-import com.zed.admin.common.base.PageParam;
-import com.zed.admin.common.utils.AutoMapperUtil;
 import com.zed.admin.system.pojo.ao.UserAddAO;
 import com.zed.admin.system.pojo.ao.UserQueryAO;
 import com.zed.admin.system.pojo.ao.UserUpdateAO;
@@ -9,6 +7,8 @@ import com.zed.admin.system.pojo.dto.UserDTO;
 import com.zed.admin.system.pojo.verify.UserVerify;
 import com.zed.admin.system.pojo.vo.UserVO;
 import com.zed.admin.system.service.UserService;
+import com.zed.common.base.PageParam;
+import com.zed.common.utils.AutoMapperUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
