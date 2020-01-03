@@ -56,7 +56,7 @@ public class UserController {
         UserDTO dto = AutoMapperUtil.toPOJO(addAO, UserDTO.class);
         userVerify.verifyRepeat(dto);
         userService.addUser(dto);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @ApiOperation("修改用户")
@@ -64,7 +64,7 @@ public class UserController {
     public ResponseEntity update(@Validated @RequestBody UserUpdateAO updateAO) {
         UserDTO dto = AutoMapperUtil.toPOJO(updateAO, UserDTO.class);
         userService.updateUser(dto);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
     @ApiOperation("删除用户")

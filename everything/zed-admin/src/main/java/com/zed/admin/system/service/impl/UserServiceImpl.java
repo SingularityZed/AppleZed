@@ -18,6 +18,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 /**
  * UserServiceImpl
  *
@@ -58,14 +60,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      */
     @Override
     public UserVO getUserById(Long id) {
-        UserVO vo = new UserVO();
         User user = this.getOne(new LambdaQueryWrapper<User>().eq(User::getId, id).eq(User::getIsDeleted, false));
-        if (user != null) {
-            AutoMapperUtil.mapping(user, vo);
-        } else {
-            throw new DaoException(StatusCode.VERIFY_410001);
-        }
-        return vo;
+        return AutoMapperUtil.getToPOJO(id,user,UserVO.class);
     }
 
     /**

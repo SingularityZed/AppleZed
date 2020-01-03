@@ -61,7 +61,22 @@ add ,delete,update,query  不要出现edit ，前端显示编辑，但是后端�
 接口API定义，开放前端为 api/service名称/版本/具体业务
 接口API定义，服务间调用 inner/service名称/版本/具体业务
 
-@Autowired 尽量通过set方法注入 避免引入不到 
+#### 注解注入(方便,但可能引用不到)
+@Autowired
+尽量通过set方法注入 避免引入不到 
+
+#### 构造器注入(旨在不变性):
+   private final GeneratorService generatorService;
+    public GeneratorController(GeneratorService generatorService) {
+        this.generatorService = generatorService;
+    }
+    
+#### 通过set方法注入(可配置性):
+    private GeneratorService generatorService;
+    @Autowired
+    public void setGeneratorService(GeneratorService generatorService) {
+        this.generatorService = generatorService;
+    }
 
 
 ## 遇到问题

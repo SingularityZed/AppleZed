@@ -1,12 +1,12 @@
 package com.zed.generator.controller;
 
 import com.zed.common.base.PageParam;
+import com.zed.common.exception.ControllerException;
+import com.zed.generator.info.ColumnInfo;
+import com.zed.generator.service.GenConfigService;
 import com.zed.generator.service.GeneratorService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import me.zhengjie.domain.vo.ColumnInfo;
-import me.zhengjie.exception.BadRequestException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * @author Zheng Jie
+ * @author zed
  * @date 2019-01-02
  */
 @RestController
@@ -23,17 +23,18 @@ import java.util.List;
 @Api(tags = "系统：代码生成管理")
 public class GeneratorController {
 
+    /**
+     * 是否启用代码生成
+     */
     @Value("${generator.enabled}")
     private Boolean generatorEnabled;
 
-    /**
-     * 通过set方法注入
-     */
-    private GeneratorService generatorService;
+    private final GeneratorService generatorService;
+    private final GenConfigService genConfigService;
 
-    @Autowired
-    public void setGeneratorService(GeneratorService generatorService) {
+    public GeneratorController(GeneratorService generatorService, GenConfigService genConfigService) {
         this.generatorService = generatorService;
+        this.genConfigService = genConfigService;
     }
 
 
@@ -46,19 +47,20 @@ public class GeneratorController {
     }
 
     @ApiOperation("查询表内元数据")
-    @GetMapping(value = "/columns/{schema}/{tableName}")
-    public ResponseEntity getTables(@PathVariable String schema,
+    @GetMapping(value = "/columns/{database}/{tableName}")
+    public ResponseEntity getTables(@PathVariable String database,
                                     @PathVariable String tableName) {
-        return new ResponseEntity<>(generatorService.getColumns(schema,tableName), HttpStatus.OK);
+        return new ResponseEntity<>(generatorService.getColumns(database, tableName), HttpStatus.OK);
     }
 
     @ApiOperation("生成代码")
     @PostMapping
-    public ResponseEntity generator(@RequestBody List<ColumnInfo> columnInfos, @RequestParam String tableName) {
+    public ResponseEntity generator(@RequestBody List<ColumnInfo> columnInfos,
+                                    @RequestParam String tableName) {
         if (!generatorEnabled) {
-            throw new BadRequestException("此环境不允许生成代码！");
+            throw new ControllerException("此环境不允许生成代码！");
         }
-        generatorService.generator(columnInfos, genConfigService.find(), tableName);
+        generatorService.generator(genConfigService.getConfig(), tableName, columnInfos);
         return new ResponseEntity(HttpStatus.OK);
     }
 

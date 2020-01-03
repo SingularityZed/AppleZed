@@ -7,7 +7,7 @@ import com.zed.common.exception.DaoException;
 import com.zed.common.exception.ManagerException;
 import com.zed.common.exception.ServiceException;
 import com.zed.common.utils.ThrowableUtil;
-import com.zed.common.validate.ValidateTypeUtils;
+import com.zed.common.validate.ValidationUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.http.fileupload.FileUploadBase;
 import org.springframework.http.HttpStatus;
@@ -66,7 +66,7 @@ public class GlobalExceptionHandler {
         // 校验字段的注解类型
         String validateType = str[0];
         // 根据类型得到code
-        Integer code = ValidateTypeUtils.validateType(validateType);
+        Integer code = ValidationUtils.validateType(validateType);
         // 返回校验信息
         String message = str[1] + ":" + e.getBindingResult().getAllErrors().get(0).getDefaultMessage();
         return buildResponseEntity(ApiError.error(code, message));

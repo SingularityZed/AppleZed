@@ -1,11 +1,15 @@
 package com.zed.common.utils;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zed.common.constant.StatusCode;
+import com.zed.common.exception.DaoException;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * 功能描述: bean copy
@@ -87,8 +91,10 @@ public class AutoMapperUtil {
         return target;
     }
 
+    /*--start--业务方法----*/
+
     /**
-     * POJO转换输出POJO
+     * POJO转换输出POJO并抛异常
      * 使用BeanUtils工具
      *
      * @param t
@@ -98,6 +104,51 @@ public class AutoMapperUtil {
      * @return
      */
     public static <T, K> K toPOJO(T t, Class<K> kcz) {
+        t = Optional.ofNullable(t).orElseThrow(() -> new DaoException(StatusCode.VERIFY_410001));
+        K k = BeanUtils.instantiateClass(kcz);
+        BeanUtils.copyProperties(t, k);
+        return k;
+    }
+
+    /**
+     * POJO转换输出POJO并抛异常详情无参数(默认ID)
+     * 使用BeanUtils工具
+     *
+     * @param t
+     * @param kcz
+     * @param <T>
+     * @param <K>
+     * @return
+     */
+    public static <X, T, K> K getToPOJO(X x, T t, Class<K> kcz) {
+        T finalT = t;
+        t = Optional.ofNullable(t).orElseThrow(() ->
+                new DaoException(StatusCode.VERIFY_410001.getValue(), StatusCode.VERIFY_410001.getMessage() + ":"
+                        + finalT.getClass().getName() + "不存在: id is" + x));
+        K k = BeanUtils.instantiateClass(kcz);
+        BeanUtils.copyProperties(t, k);
+        return k;
+    }
+
+    /**
+     * POJO转换输出POJO并抛异常详情带参数
+     * 使用BeanUtils工具
+     *
+     * @param t
+     * @param kcz
+     * @param <T>
+     * @param <K>
+     * @return
+     */
+    public static <X, T, K> K getToPOJOParam(X x, String param, T t, Class<K> kcz) {
+        if (StringUtils.isBlank(param)) {
+            param = "id";
+        }
+        T finalT = t;
+        String finalParam = param;
+        t = Optional.ofNullable(t).orElseThrow(() ->
+                new DaoException(StatusCode.VERIFY_410001.getValue(), StatusCode.VERIFY_410001.getMessage() + ":"
+                        + finalT.getClass().getName() + "不存在:" + finalParam + "is" + x));
         K k = BeanUtils.instantiateClass(kcz);
         BeanUtils.copyProperties(t, k);
         return k;
