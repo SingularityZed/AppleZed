@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * @author Zheng Jie
+ * @author zed
  */
 @Mapper
 public interface GeneratorMapper {

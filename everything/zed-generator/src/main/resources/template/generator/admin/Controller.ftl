@@ -1,6 +1,6 @@
 package ${package}.rest;
 
-import me.zhengjie.aop.log.Log;
+import com.zed.aop.log.Log;
 import ${package}.domain.${className};
 import ${package}.service.${className}Service;
 import ${package}.service.dto.${className}QueryCriteria;
@@ -15,6 +15,8 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+* ${className}Controller
+*
 * @author ${author}
 * @date ${date}
 */
@@ -29,40 +31,49 @@ public class ${className}Controller {
         this.${changeClassName}Service = ${changeClassName}Service;
     }
 
-    @Log("导出数据")
-    @ApiOperation("导出数据")
-    @GetMapping(value = "/download")
+
+    @GetMapping("/pageList")
+    @ApiOperation("分页查询${className}")
     @PreAuthorize("@el.check('${changeClassName}:list')")
-    public void download(HttpServletResponse response, ${className}QueryCriteria criteria) throws IOException {
-        ${changeClassName}Service.download(${changeClassName}Service.queryAll(criteria), response);
+    public ResponseEntity searchPage(PageParam pageParam, ${className}QueryAO queryAO){
+        ${className}DTO dto = AutoMapperUtil.toPOJO(queryAO, ${className}DTO.class);
+        return new ResponseEntity<>(${changeClassName}Service.getPageList(pageParam,dto),HttpStatus.OK);
     }
 
-    @GetMapping
-    @Log("查询${className}")
+    @GetMapping("/{${pkChangeColName}}")
     @ApiOperation("查询${className}")
-    @PreAuthorize("@el.check('${changeClassName}:list')")
-    public ResponseEntity get${className}s(${className}QueryCriteria criteria, Pageable pageable){
-        return new ResponseEntity<>(${changeClassName}Service.queryAll(criteria,pageable),HttpStatus.OK);
+    @PreAuthorize("@el.check('${changeClassName}:detail')")
+    public ResponseEntity get${className}(@PathVariable ${pkColumnType} ${pkChangeColName}){
+        ${className}VO vo = ${changeClassName}Service.get${className}ById(${pkChangeColName});
+        return new ResponseEntity<>(vo,HttpStatus.OK);
     }
 
-    @PostMapping
+
+    @PostMapping("/add")
     @Log("新增${className}")
     @ApiOperation("新增${className}")
     @PreAuthorize("@el.check('${changeClassName}:add')")
-    public ResponseEntity create(@Validated @RequestBody ${className} resources){
-        return new ResponseEntity<>(${changeClassName}Service.create(resources),HttpStatus.CREATED);
+    public ResponseEntity add(@Validated @RequestBody ${className}AddVO addAO){
+        // 转换
+        ${className}DTO dto = AutoMapperUtil.toPOJO(addAO, ${className}DTO.class);
+        ${changeClassName}Verify.verifyRepeat(dto);
+        ${changeClassName}Service.add${className}(dto);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PutMapping
+    @PutMapping("/update")
     @Log("修改${className}")
     @ApiOperation("修改${className}")
     @PreAuthorize("@el.check('${changeClassName}:edit')")
-    public ResponseEntity update(@Validated @RequestBody ${className} resources){
-        ${changeClassName}Service.update(resources);
+    public ResponseEntity update(@Validated @RequestBody ${className}UpdateAO updateAO){
+        // 转换
+        ${className}DTO dto = AutoMapperUtil.toPOJO(updateAO, ${className}DTO.class);
+        ${changeClassName}Verify.verifyRepeat(dto);
+        ${changeClassName}Service.update${className}(dto);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping(value = "/{${pkChangeColName}}")
+    @DeleteMapping("/{${pkChangeColName}}")
     @Log("删除${className}")
     @ApiOperation("删除${className}")
     @PreAuthorize("@el.check('${changeClassName}:del')")
@@ -70,4 +81,5 @@ public class ${className}Controller {
         ${changeClassName}Service.delete(${pkChangeColName});
         return new ResponseEntity(HttpStatus.OK);
     }
+
 }

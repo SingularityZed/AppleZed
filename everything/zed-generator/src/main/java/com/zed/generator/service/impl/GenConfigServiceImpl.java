@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 @CacheConfig(cacheNames = "genConfig")
 public class GenConfigServiceImpl implements GenConfigService {
 
-
     /**
      * 是否覆盖配置信息
      */
@@ -33,14 +32,14 @@ public class GenConfigServiceImpl implements GenConfigService {
     public GenConfig getConfig() {
         GenConfig genConfig = new GenConfig();
         genConfig.setIsCover(isCover);
-        genConfig.setPackagePath(PropertiesUtils.getConfigParam(genConfig.getPackagePath()));
-        genConfig.setModuleName(PropertiesUtils.getConfigParam(genConfig.getModuleName()));
-        genConfig.setTablePrefix(PropertiesUtils.getConfigParam(genConfig.getTablePrefix()));
-        genConfig.setApiPath(PropertiesUtils.getConfigParam(genConfig.getApiPath()));
-        genConfig.setFrontPath(PropertiesUtils.getConfigParam(genConfig.getFrontPath()));
-        genConfig.setFrontApiPath(PropertiesUtils.getConfigParam(genConfig.getFrontApiPath()));
-        genConfig.setAuthor(PropertiesUtils.getConfigParam(genConfig.getAuthor()));
-        genConfig.setEmail(PropertiesUtils.getConfigParam(genConfig.getEmail()));
+        genConfig.setPackagePath(PropertiesUtils.getConfigParam(GenConfig.PACKAGE_PATH));
+        genConfig.setModuleName(PropertiesUtils.getConfigParam(GenConfig.MODULE_NAME));
+        genConfig.setTablePrefix(PropertiesUtils.getConfigParam(GenConfig.TABLE_PREFIX));
+        genConfig.setApiPath(PropertiesUtils.getConfigParam(GenConfig.API_PATH));
+        genConfig.setFrontPath(PropertiesUtils.getConfigParam(GenConfig.FRONT_PATH));
+        genConfig.setFrontApiPath(PropertiesUtils.getConfigParam(GenConfig.FRONT_API_PATH));
+        genConfig.setAuthor(PropertiesUtils.getConfigParam(GenConfig.AUTHOR));
+        genConfig.setEmail(PropertiesUtils.getConfigParam(GenConfig.EMAIL));
         return genConfig;
     }
 
@@ -51,13 +50,13 @@ public class GenConfigServiceImpl implements GenConfigService {
      */
     @Override
     public void updateConfig(GenConfig genConfig) {
-        PropertiesUtils.setConfigParam(genConfig.PACKAGE_PATH, genConfig.getPackagePath());
-        PropertiesUtils.setConfigParam(genConfig.MODULE_NAME, genConfig.getModuleName());
-        PropertiesUtils.setConfigParam(genConfig.TABLE_PREFIX, genConfig.getTablePrefix());
-        PropertiesUtils.setConfigParam(genConfig.API_PATH, genConfig.getApiPath());
-        PropertiesUtils.setConfigParam(genConfig.FRONT_PATH, genConfig.getFrontPath());
-        PropertiesUtils.setConfigParam(genConfig.FRONT_API_PATH, genConfig.getFrontApiPath());
-        PropertiesUtils.setConfigParam(genConfig.AUTHOR, genConfig.getAuthor());
-        PropertiesUtils.setConfigParam(genConfig.EMAIL, genConfig.getEmail());
+        PropertiesUtils.setConfigParam(GenConfig.PACKAGE_PATH, genConfig.getPackagePath());
+        PropertiesUtils.setConfigParam(GenConfig.MODULE_NAME, genConfig.getModuleName());
+        PropertiesUtils.setConfigParam(GenConfig.TABLE_PREFIX, genConfig.getTablePrefix());
+        PropertiesUtils.setConfigParam(GenConfig.API_PATH, genConfig.getApiPath());
+        PropertiesUtils.setConfigParam(GenConfig.FRONT_PATH, genConfig.getFrontPath());
+        PropertiesUtils.setConfigParam(GenConfig.FRONT_API_PATH, genConfig.getFrontApiPath());
+        PropertiesUtils.setConfigParam(GenConfig.AUTHOR, genConfig.getAuthor());
+        PropertiesUtils.setConfigParam(GenConfig.EMAIL, genConfig.getEmail());
     }
 }

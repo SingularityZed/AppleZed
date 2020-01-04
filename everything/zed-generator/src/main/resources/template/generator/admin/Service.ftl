@@ -1,47 +1,68 @@
 package ${package}.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.zed.common.base.PageParam;
 import ${package}.domain.${className};
 import ${package}.service.dto.${className}DTO;
 import ${package}.service.dto.${className}QueryCriteria;
-import org.springframework.data.domain.Pageable;
 import java.util.Map;
 import java.util.List;
 import java.io.IOException;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+* ${className}Service
+*
 * @author ${author}
 * @date ${date}
 */
-public interface ${className}Service {
+public interface ${className}Service extends IService<${className}>{
 
     /**
-    * 查询数据分页
-    * @param criteria 条件参数
-    * @param pageable 分页参数
-    * @return Map<String,Object>
+    * 分页查询
+    *
+    * @param pageParam 条件参数
+    * @param dto 分页参数
+    * @return
     */
-    Map<String,Object> queryAll(${className}QueryCriteria criteria, Pageable pageable);
+    Page getPageList(PageParam pageParam, ${className}DTO dto);
 
     /**
-    * 查询所有数据不分页
-    * @param criteria 条件参数
-    * @return List<${className}DTO>
-    */
-    List<${className}DTO> queryAll(${className}QueryCriteria criteria);
-
-    /**
-     * 根据ID查询
+     * 获取详情
+     *
      * @param ${pkChangeColName} ID
-     * @return ${className}DTO
+     * @return ${className}VO
      */
-    ${className}DTO findById(${pkColumnType} ${pkChangeColName});
+    ${className}VO get${className}ById(${pkColumnType} ${pkChangeColName});
 
-    ${className}DTO create(${className} resources);
+    /**
+    * 新增
+    *
+    * @param dto
+    */
+    void add${className}(${className}DTO dto);
 
-    void update(${className} resources);
+    /**
+    * 更新
+    *
+    * @param dto
+    */
+    void update${className}(${className}DTO dto);
 
-    void delete(${pkColumnType} ${pkChangeColName});
+    /**
+    * 删除
+    *
+    * @param ${pkChangeColName}
+    */
+    void delete${className}(${pkColumnType} ${pkChangeColName});
 
-    void download(List<${className}DTO> all, HttpServletResponse response) throws IOException;
+    /**
+    * 校验
+    *
+    * @param dto
+    * @return
+    */
+    ${className}VerifyDTO verifyRepeat(${className}DTO dto);
+
 }

@@ -19,7 +19,7 @@ import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 * @date ${date}
 */
 @Data
-public class ${className}DTO implements Serializable {
+public class ${className}Verify implements Serializable {
 <#if columns??>
     <#list columns as column>
 

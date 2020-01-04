@@ -31,7 +31,7 @@ public class PropertiesUtils {
     /**
      * 读取generator.properties,并静态资源加载一次
      */
-    private static Configuration CONFIG;
+    public static Configuration CONFIG;
     private static FileBasedConfigurationBuilder<FileBasedConfiguration> builder;
 
     static {
@@ -121,5 +121,15 @@ public class PropertiesUtils {
         }
     }
 
+
+    /**
+     * 转换mysql数据类型为java数据类型
+     *
+     * @param type 数据库字段类型
+     * @return String
+     */
+    public static String cloToJava(String type) {
+        return CONFIG.getString(type, "unknownType");
+    }
 
 }

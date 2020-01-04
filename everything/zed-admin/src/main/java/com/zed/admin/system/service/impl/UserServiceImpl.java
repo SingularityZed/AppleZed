@@ -11,14 +11,10 @@ import com.zed.admin.system.pojo.dto.UserVerifyDTO;
 import com.zed.admin.system.pojo.vo.UserVO;
 import com.zed.admin.system.service.UserService;
 import com.zed.common.base.PageParam;
-import com.zed.common.constant.StatusCode;
-import com.zed.common.exception.DaoException;
 import com.zed.common.utils.AutoMapperUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 /**
  * UserServiceImpl
@@ -61,7 +57,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public UserVO getUserById(Long id) {
         User user = this.getOne(new LambdaQueryWrapper<User>().eq(User::getId, id).eq(User::getIsDeleted, false));
-        return AutoMapperUtil.getToPOJO(id,user,UserVO.class);
+        return AutoMapperUtil.toPOJO(user, UserVO.class);
     }
 
     /**
@@ -71,8 +67,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      */
     @Override
     public void addUser(UserDTO dto) {
-        User user = new User();
-        AutoMapperUtil.mapping(dto, user);
+        User user = AutoMapperUtil.toPOJO(dto, User.class);
         this.saveOrUpdate(user);
     }
 
@@ -84,8 +79,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public void updateUser(UserDTO dto) {
         this.getUserById(dto.getId());
-        User user = new User();
-        AutoMapperUtil.mapping(dto, user);
+        User user = AutoMapperUtil.toPOJO(dto, User.class);
         this.saveOrUpdate(user);
     }
 

@@ -1,18 +1,18 @@
-package com.zed.admin;
+package com.zed.generator;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Admin
+ * 代码生成
  *
  * @author zed
  */
 @SpringBootApplication
-public class AdminApplication {
+public class GeneratorApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AdminApplication.class, args);
+        SpringApplication.run(GeneratorApplication.class, args);
     }
 
 }

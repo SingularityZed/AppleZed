@@ -17,11 +17,11 @@
 <!--        from woman-->
 <!--        where id = #{id}-->
 <!--    </select>-->
-    <select id="selectByName" resultType="com.zed.admin.system.entity.User">
-select * from user
+<!--    <select id="selectByName" resultType="com.zed.admin.system.entity.User">-->
+<!--select * from user-->
 
 
-    </select>
+<!--    </select>-->
     <select id="verifyRepeat" resultType="com.zed.admin.system.pojo.dto.UserVerifyDTO">
 
 

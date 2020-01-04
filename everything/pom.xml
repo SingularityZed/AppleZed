@@ -164,6 +164,14 @@
 			<artifactId>commons-configuration2</artifactId>
 			<version>2.6</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.9.4</version>
+		</dependency>
+
+
 
 		<!--IP地址地理-->
 		<!--https://gitee.com/lionsoul/ip2region/tree/v1.4-release/-->

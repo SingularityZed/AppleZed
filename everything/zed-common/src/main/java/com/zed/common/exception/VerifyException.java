@@ -1,6 +1,7 @@
 package com.zed.common.exception;
 
 
+import cn.hutool.core.util.StrUtil;
 import com.zed.common.constant.BaseEnum;
 import com.zed.common.constant.StatusCode;
 import lombok.Getter;
@@ -36,6 +37,11 @@ public class VerifyException extends RuntimeException {
         super(msg);
         this.code = code;
         this.e = e;
+    }
+
+    public VerifyException(Integer code, String msg, String extraMag) {
+        super(msg + StrUtil.COLON + extraMag);
+        this.code = code;
     }
 
     public <T extends BaseEnum> VerifyException(T t) {

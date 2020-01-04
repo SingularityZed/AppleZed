@@ -150,7 +150,7 @@ public class GenUtils {
             listMap.put("columnComment", column.getColumnComment());
             listMap.put("columnKey", column.getColumnKey());
 
-            String colType = ColUtil.cloToJava(column.getColumnType().toString());
+            String colType = PropertiesUtils.cloToJava(column.getColumnType().toString());
             String changeColumnName = StringTools.toCamelCase(column.getColumnName().toString());
             String capitalColumnName = StringTools.toCapitalizeCamelCase(column.getColumnName().toString());
             if (PK.equals(column.getColumnKey())) {

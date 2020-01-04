@@ -15,14 +15,14 @@ import lombok.Data;
 @ApiModel("代码生成配置")
 public class GenConfig {
 
-    public final String PACKAGE_PATH = "packagePath";
-    public final String MODULE_NAME = "moduleName";
-    public final String TABLE_PREFIX = "tablePrefix";
-    public final String API_PATH = "apiPath";
-    public final String FRONT_PATH = "frontPath";
-    public final String FRONT_API_PATH = "frontApiPath";
-    public final String AUTHOR = "author";
-    public final String EMAIL = "email";
+    public static final String PACKAGE_PATH = "packagePath";
+    public static final String MODULE_NAME = "moduleName";
+    public static final String TABLE_PREFIX = "tablePrefix";
+    public static final String API_PATH = "apiPath";
+    public static final String FRONT_PATH = "frontPath";
+    public static final String FRONT_API_PATH = "frontApiPath";
+    public static final String AUTHOR = "author";
+    public static final String EMAIL = "email";
 
     @ApiModelProperty("包路径")
     private String packagePath;

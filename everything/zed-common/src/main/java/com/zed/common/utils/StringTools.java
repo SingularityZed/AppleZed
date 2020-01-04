@@ -154,7 +154,7 @@ public class StringTools extends StringUtils {
             String path = "ip2region/ip2region.db";
             String name = "ip2region.db";
             DbConfig config = new DbConfig();
-            File file = FileUtil.inputStreamToFile(new ClassPathResource(path).getStream(), name);
+            File file = FileUtils.inputStreamToFile(new ClassPathResource(path).getStream(), name);
             DbSearcher searcher = new DbSearcher(config, file.getPath());
             Method method;
             method = searcher.getClass().getMethod("btreeSearch", String.class);

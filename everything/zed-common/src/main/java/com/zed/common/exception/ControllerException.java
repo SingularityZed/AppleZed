@@ -1,5 +1,6 @@
 package com.zed.common.exception;
 
+import cn.hutool.core.util.StrUtil;
 import com.zed.common.constant.BaseEnum;
 import com.zed.common.constant.StatusCode;
 import lombok.Getter;
@@ -33,7 +34,10 @@ public class ControllerException extends RuntimeException {
         this.code = code;
         this.e = e;
     }
-
+    public ControllerException(Integer code, String msg, String extraMag) {
+        super(msg + StrUtil.COLON + extraMag);
+        this.code = code;
+    }
 
     public <T extends BaseEnum> ControllerException(T t) {
         super(t.getMessage());

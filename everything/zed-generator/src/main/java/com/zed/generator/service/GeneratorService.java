@@ -8,7 +8,7 @@ import com.zed.generator.info.ColumnInfo;
 import java.util.List;
 
 /**
- * @author Zheng Jie
+ * @author zed
  * @date 2019-01-02
  */
 public interface GeneratorService {
