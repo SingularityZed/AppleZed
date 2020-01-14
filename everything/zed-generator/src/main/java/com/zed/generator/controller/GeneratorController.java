@@ -7,6 +7,7 @@ import com.zed.generator.service.GenConfigService;
 import com.zed.generator.service.GeneratorService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,13 +30,10 @@ public class GeneratorController {
     @Value("${generator.enabled}")
     private Boolean generatorEnabled;
 
-    private final GeneratorService generatorService;
-    private final GenConfigService genConfigService;
-
-    public GeneratorController(GeneratorService generatorService, GenConfigService genConfigService) {
-        this.generatorService = generatorService;
-        this.genConfigService = genConfigService;
-    }
+    @Autowired
+    private GeneratorService generatorService;
+    @Autowired
+    private GenConfigService genConfigService;
 
 
     @ApiOperation("查询数据库元数据")
@@ -48,13 +46,14 @@ public class GeneratorController {
 
     @ApiOperation("查询表内元数据")
     @GetMapping(value = "/columns/{database}/{tableName}")
-    public ResponseEntity getTables(@PathVariable String database,
+    public ResponseEntity getColumns(PageParam pageParam,
+                                    @PathVariable String database,
                                     @PathVariable String tableName) {
-        return new ResponseEntity<>(generatorService.getColumns(database, tableName), HttpStatus.OK);
+        return new ResponseEntity<>(generatorService.getColumns(pageParam,database, tableName), HttpStatus.OK);
     }
 
     @ApiOperation("生成代码")
-    @PostMapping
+    @PostMapping(value = "/make")
     public ResponseEntity generator(@RequestBody List<ColumnInfo> columnInfos,
                                     @RequestParam String tableName) {
         if (!generatorEnabled) {

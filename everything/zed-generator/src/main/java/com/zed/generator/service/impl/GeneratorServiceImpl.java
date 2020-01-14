@@ -21,31 +21,41 @@ import java.util.List;
 @Service
 public class GeneratorServiceImpl implements GeneratorService {
 
+    @Autowired
     private GeneratorMapper generatorMapper;
 
-    @Autowired
-    private void setGeneratorMapper(GeneratorMapper generatorMapper) {
-        this.generatorMapper = generatorMapper;
-    }
 
-
-//
-//    @PersistenceContext
-//    private EntityManager em;
-
+    /**
+     * 查询数据库元数据
+     *
+     * @param pageParam 分页参数
+     * @param database  数据库
+     * @param tableName 表名
+     * @return
+     */
     @Override
     public Page getTables(PageParam pageParam, String database, String tableName) {
-        List<TableInfo> tableInfoList = generatorMapper.getTables(pageParam, database, tableName);
-
-        return null;
+        Page<TableInfo> page = pageParam.buildPage();
+        List<TableInfo> tableInfoList = generatorMapper.getTables(page, database, tableName);
+        page.setRecords(tableInfoList);
+        return page;
     }
 
+
+    /**
+     * 得到数据表的元数据
+     *
+     * @param pageParam 分页参数
+     * @param database  数据库
+     * @param tableName 表名
+     * @return
+     */
     @Override
-    public Page getColumns(String database, String tableName) {
-
-        List<ColumnInfo> columnInfos = generatorMapper.getColumns(database, tableName);
-
-        return null;
+    public Page getColumns(PageParam pageParam, String database, String tableName) {
+        Page<ColumnInfo> page = pageParam.buildPage();
+        List<ColumnInfo> columnInfoList = generatorMapper.getColumns(database, tableName);
+        page.setRecords(columnInfoList);
+        return page;
     }
 
 

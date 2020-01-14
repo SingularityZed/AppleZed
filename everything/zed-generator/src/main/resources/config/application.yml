@@ -29,3 +29,12 @@ spring:
 generator:
   enabled: true
   isCover: true
+
+
+# 文件存储路径
+file:
+  path: D:\AppleZed\file\
+  avatar: D:\AppleZed\avatar\
+  # 文件大小 /M
+  maxSize: 100
+  avatarMaxSize: 5

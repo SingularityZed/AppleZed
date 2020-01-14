@@ -26,11 +26,12 @@ public interface GeneratorService {
     /**
      * 得到数据表的元数据
      *
+     * @param pageParam 分页参数
      * @param database  数据库
      * @param tableName 表名
      * @return /
      */
-    Page getColumns(String database, String tableName);
+    Page getColumns(PageParam pageParam, String database, String tableName);
 
     /**
      * 生成代码
@@ -39,5 +40,5 @@ public interface GeneratorService {
      * @param genConfig   代码生成配置
      * @param tableName   表名
      */
-    void generator( GenConfig genConfig,  String tableName,List<ColumnInfo> columnInfos);
+    void generator(GenConfig genConfig, String tableName, List<ColumnInfo> columnInfos);
 }
