@@ -8,7 +8,10 @@ generator
 ## 重建项目
 2019/12/12  pom依赖问题重建一次
 
-
+2020/01/15  代码生成找不到模板,决定采用thymeleaf的方式生成
+https://github.com/BoomManPro/thymeleaf-template
+https://www.thymeleaf.org/
+https://github.com/thymeleaf/thymeleaf/issues/395
 
 
 #AppleZed
