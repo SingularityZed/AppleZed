@@ -23,6 +23,7 @@ import org.springframework.web.multipart.support.MissingServletRequestPartExcept
 
 import java.nio.file.AccessDeniedException;
 import java.sql.SQLException;
+import java.sql.SQLSyntaxErrorException;
 import java.util.Objects;
 
 import static org.springframework.http.HttpStatus.*;
@@ -49,6 +50,7 @@ public class GlobalExceptionHandler {
         log.error(ThrowableUtil.getStackTrace(e));
         return buildResponseEntity(ApiError.error(e.getMessage()));
     }
+
 
     /**
      * validate 插件异常处理
@@ -145,6 +147,19 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler({SQLException.class})
     public ResponseEntity handleSQLException(SQLException e) {
+        // 打印堆栈信息
+        log.error(ThrowableUtil.getStackTrace(e));
+        return buildResponseEntity(ApiError.error(StatusCode.SERVER_540000.getValue(), e.getMessage()));
+    }
+
+    /**
+     * sql异常处理字段
+     *
+     * @param e
+     * @return
+     */
+    @ExceptionHandler({SQLSyntaxErrorException.class})
+    public ResponseEntity handleSQLSyntaxErrorException(SQLSyntaxErrorException e) {
         // 打印堆栈信息
         log.error(ThrowableUtil.getStackTrace(e));
         return buildResponseEntity(ApiError.error(StatusCode.SERVER_540000.getValue(), e.getMessage()));

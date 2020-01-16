@@ -19,8 +19,7 @@ import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 * @author ${author}
 * @date ${date}
 */
-@Data
-public enum ${className}VO implements BaseEnum {
+public enum ${className}Enum implements BaseEnum {
 /**
 * xxx
 */

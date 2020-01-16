@@ -4,9 +4,9 @@ import com.zed.admin.system.pojo.ao.UserAddAO;
 import com.zed.admin.system.pojo.ao.UserQueryAO;
 import com.zed.admin.system.pojo.ao.UserUpdateAO;
 import com.zed.admin.system.pojo.dto.UserDTO;
-import com.zed.admin.system.pojo.verify.UserVerify;
 import com.zed.admin.system.pojo.vo.UserVO;
 import com.zed.admin.system.service.UserService;
+import com.zed.admin.system.verify.UserVerify;
 import com.zed.common.base.PageParam;
 import com.zed.common.utils.AutoMapperUtil;
 import io.swagger.annotations.Api;
@@ -32,6 +32,7 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
     @Autowired
     private UserVerify userVerify;
 

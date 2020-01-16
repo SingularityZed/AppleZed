@@ -94,6 +94,11 @@ add ,delete,update,query  不要出现edit ，前端显示编辑，但是后端�
 LambdaQueryChainWrapper  链式查询 就是多表查询
 eg:https://mybatis.plus/guide/crud-interface.html#count
 
+
+GlobalExceptionHandler捕获异常没有成功，可能是扫描Bean没成功，加下面注解解决 2020/01/16
+@ComponentScan(basePackages = "com.zed")
+
+
 ## 版本管理
 POM版本管理，因为国内的版本以及Maven的版本落后，优先使用稳定版本
 暂时不需要分，具体再想办法

@@ -286,7 +286,7 @@ public class GenUtils {
             return packagePath + "pojo" + File.separator + "verify" + File.separator + className + FILE_VERIFY;
         }
         if (FILE_NAME_ENUM.equals(templateName)) {
-            return packagePath + "enum" + File.separator + className + FILE_ENUM;
+            return packagePath + "enums" + File.separator + className + FILE_ENUM;
         }
 
         return null;

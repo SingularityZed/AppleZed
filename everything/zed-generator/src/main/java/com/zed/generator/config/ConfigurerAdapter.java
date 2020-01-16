@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 /**
  * WebMvcConfigurer
  *
- * @author Zheng Jie
+ * @author zed
  * @date 2018-11-30
  */
 @Configuration

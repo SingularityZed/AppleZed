@@ -25,12 +25,8 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/api/${changeClassName}")
 public class ${className}Controller {
 
-    private final ${className}Service ${changeClassName}Service;
-
-    public ${className}Controller(${className}Service ${changeClassName}Service) {
-        this.${changeClassName}Service = ${changeClassName}Service;
-    }
-
+     @Autowired
+    private  ${className}Service ${changeClassName}Service;
 
     @GetMapping("/pageList")
     @ApiOperation("分页查询${className}")
@@ -53,7 +49,7 @@ public class ${className}Controller {
     @Log("新增${className}")
     @ApiOperation("新增${className}")
     @PreAuthorize("@el.check('${changeClassName}:add')")
-    public ResponseEntity add(@Validated @RequestBody ${className}AddVO addAO){
+    public ResponseEntity add(@Validated @RequestBody ${className}AddAO addAO){
         // 转换
         ${className}DTO dto = AutoMapperUtil.toPOJO(addAO, ${className}DTO.class);
         ${changeClassName}Verify.verifyRepeat(dto);

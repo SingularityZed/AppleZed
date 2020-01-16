@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 * @author ${author}
 * @date ${date}
 */
+@Slf4j
+@Component
 public class ${className}Manager {
 
 
