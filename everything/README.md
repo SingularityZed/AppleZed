@@ -8,8 +8,14 @@ generator
 ## 重建项目
 2019/12/12  pom依赖问题重建一次
 
+2020/01/15  代码生成找不到模板,决定采用thymeleaf的方式生成
+https://github.com/BoomManPro/thymeleaf-template
+https://www.thymeleaf.org/
+https://github.com/thymeleaf/thymeleaf/issues/395
 
-
+2020/01/16  
+2020/01/16  
+ 
 
 #AppleZed
 
@@ -89,4 +95,5 @@ LambdaQueryChainWrapper  链式查询 就是多表查询
 eg:https://mybatis.plus/guide/crud-interface.html#count
 
 ## 版本管理
+POM版本管理，因为国内的版本以及Maven的版本落后，优先使用稳定版本
 暂时不需要分，具体再想办法

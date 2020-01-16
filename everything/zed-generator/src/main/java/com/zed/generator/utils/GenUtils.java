@@ -120,7 +120,7 @@ public class GenUtils {
      */
     public static void generatorCode(GenConfig genConfig, String tableName,List<ColumnInfo> columnInfos) throws IOException {
         Map<String, Object> map = new HashMap<>(64);
-        map.put("packagePath", genConfig.getPackagePath());
+        map.put("package", genConfig.getPackagePath());
         map.put("moduleName", genConfig.getModuleName());
         map.put("author", genConfig.getAuthor());
         map.put("date", LocalDate.now().toString());
