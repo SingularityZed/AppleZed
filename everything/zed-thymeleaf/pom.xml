@@ -10,6 +10,57 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>zed-thymeleaf</artifactId>
+    <name>thymeleaf模板</name>
+    <description>thymeleaf模板,可采用.java文件结尾</description>
 
 
+
+    <packaging>jar</packaging>
+
+    <dependencies>
+                <!--thymeleaf-->
+        		<dependency>
+        			<groupId>org.springframework.boot</groupId>
+        			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+        		</dependency>
+
+        		<!-- https://mvnrepository.com/artifact/ognl/ognl -->
+        		<dependency>
+        			<groupId>ognl</groupId>
+        			<artifactId>ognl</artifactId>
+        			<version>3.2.10</version>
+        		</dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.junit.vintage</groupId>-->
+<!--                    <artifactId>junit-vintage-engine</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+        </dependency>
+    </dependencies>
+
+
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!-- 跳过单元测试 -->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-surefire-plugin</artifactId>-->
+<!--                <configuration>-->
+<!--                    <skipTests>true</skipTests>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+        </plugins>
+    </build>
 </project>
