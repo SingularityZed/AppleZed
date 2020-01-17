@@ -1,8 +1,13 @@
 package com.zed.admin.system.verify;
 
+import com.zed.admin.constant.AdminConstant;
 import com.zed.admin.constant.AdminEnum;
+import com.zed.admin.enums.JobEnum;
+import com.zed.admin.system.pojo.dto.JobDTO;
+import com.zed.admin.system.pojo.dto.JobVerifyDTO;
 import com.zed.admin.system.pojo.dto.UserDTO;
 import com.zed.admin.system.pojo.dto.UserVerifyDTO;
+import com.zed.admin.system.service.JobService;
 import com.zed.admin.system.service.UserService;
 import com.zed.common.constant.StatusCode;
 import com.zed.common.exception.VerifyException;
@@ -12,7 +17,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 /**
- * UserVerify
+ * JobVerify
  *
  * @author zed
  * @date 2019/12/12 19:12
@@ -22,14 +27,14 @@ import org.springframework.util.Assert;
 public class JobVerify {
 
     @Autowired
-    private UserService userService;
+    private JobService jobService;
 
-    public void verifyRepeat(UserDTO dto) {
-        UserVerifyDTO verifyDTO = userService.verifyRepeat(dto);
+    public void verifyRepeat(JobDTO dto) {
+        JobVerifyDTO verifyDTO = jobService.verifyRepeat(dto);
         // Class must not be null
         Assert.notNull(verifyDTO, StatusCode.VERIFY_410001.getMessage());
-        if (verifyDTO.getCountUsername() > 0) {
-            throw new VerifyException(AdminEnum.USER_NAME_REPEAT);
+        if (verifyDTO.getCountName() > 0) {
+            throw new VerifyException(AdminConstant.JOB_NAME_REPEAT);
         }
 
     }

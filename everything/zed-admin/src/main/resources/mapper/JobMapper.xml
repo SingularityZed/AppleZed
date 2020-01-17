@@ -3,6 +3,30 @@
 
 <mapper namespace="com.zed.admin.system.mapper.JobMapper">
 
+    <!--分页-->
+    <select id="searchPage" resultType="com.zed.admin.system.pojo.vo.JobVO">
+        select
+        zaj.*,
+        zao.org_name
+        from zed_admin_job zaj
+        left join zed_admin_organization zao on zaj.org_id = zao.id and zao.is_deleted = 0
+        <where>
+            zaj.is_deleted=0
+            <if test="dto.getOrgId() != null ">
+                and zaj.org_id= #{dto.orgId}
+            </if>
+            <if test="dto.getName() != null and dto.getName() != ''">
+                and zaj.name like #{dto.name}
+            </if>
+            <if test="dto.getEnabled() != null ">
+                and zaj.enabled= #{dto.enabled}
+            </if>
+            <if test="dto.getSort() != null ">
+                ORDER BY zaj.sort
+            </if>
+        </where>
+    </select>
 
+    <!--校验-->
     <select id="verifyRepeat" resultType="com.zed.admin.system.pojo.dto.JobVerifyDTO"></select>
 </mapper>

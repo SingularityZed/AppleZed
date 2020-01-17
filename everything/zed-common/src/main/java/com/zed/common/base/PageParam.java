@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 import com.zed.common.constant.CommonConstant;
-import com.zed.common.utils.Tools;
+import com.zed.common.utils.StringTools;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 
@@ -55,7 +55,7 @@ public class PageParam implements Serializable {
      */
     public <T> Page<T> buildPage() {
         Page<T> page = new Page<>();
-        sortField = Tools.humpToUnderline(sortField);
+        sortField = StringTools.humpToUnderline(sortField);
         boolean desc = StringUtils.equals(sortOrder, CommonConstant.ORDER_DESC);
         boolean asc = StringUtils.equals(sortOrder, CommonConstant.ORDER_ASC);
         if (StringUtils.isNotBlank(sortField)) {

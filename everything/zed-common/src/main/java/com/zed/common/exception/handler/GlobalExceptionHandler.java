@@ -2,16 +2,11 @@ package com.zed.common.exception.handler;
 
 
 import com.zed.common.constant.StatusCode;
-import com.zed.common.exception.ControllerException;
-import com.zed.common.exception.DaoException;
-import com.zed.common.exception.ManagerException;
-import com.zed.common.exception.ServiceException;
+import com.zed.common.exception.*;
 import com.zed.common.utils.ThrowableUtil;
 import com.zed.common.validate.ValidationUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.http.fileupload.FileUploadBase;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -25,8 +20,6 @@ import java.nio.file.AccessDeniedException;
 import java.sql.SQLException;
 import java.sql.SQLSyntaxErrorException;
 import java.util.Objects;
-
-import static org.springframework.http.HttpStatus.*;
 
 /**
  * 全局异常处理类
@@ -45,10 +38,10 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler(Throwable.class)
-    public ResponseEntity handleException(Throwable e) {
+    public ResponseResult handleException(Throwable e) {
         // 打印堆栈信息
         log.error(ThrowableUtil.getStackTrace(e));
-        return buildResponseEntity(ApiError.error(e.getMessage()));
+        return ResponseResult.failed(StatusCode.SERVER_500000.getValue(), e.getMessage());
     }
 
 
@@ -59,7 +52,7 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ApiError> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+    public ResponseResult handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         // 打印堆栈信息
         log.error(ThrowableUtil.getStackTrace(e));
         // 得到校验字段信息
@@ -71,7 +64,7 @@ public class GlobalExceptionHandler {
         Integer code = ValidationUtils.validateType(validateType);
         // 返回校验信息
         String message = str[1] + ":" + e.getBindingResult().getAllErrors().get(0).getDefaultMessage();
-        return buildResponseEntity(ApiError.error(code, message));
+        return ResponseResult.failed(code, message);
     }
 
     /**
@@ -81,10 +74,8 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler(AccessDeniedException.class)
-    public ResponseEntity handleAccessDeniedException(AccessDeniedException e) {
-        // 打印堆栈信息
-        log.error(ThrowableUtil.getStackTrace(e));
-        return buildResponseEntity(ApiError.error(FORBIDDEN.value(), e.getMessage()));
+    public ResponseResult handleAccessDeniedException(AccessDeniedException e) {
+        return dealResponseResult(StatusCode.CLIENT_400003.getValue(), e);
     }
 
     /**
@@ -94,10 +85,8 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
-    public ResponseEntity handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException e) {
-        // 打印堆栈信息
-        log.error(ThrowableUtil.getStackTrace(e));
-        return buildResponseEntity(ApiError.error(StatusCode.CLIENT_400009.getValue(), e.getMessage()));
+    public ResponseResult handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException e) {
+        return dealResponseResult(StatusCode.CLIENT_400009.getValue(), e);
     }
 
     /**
@@ -107,10 +96,8 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler(MissingServletRequestPartException.class)
-    public ResponseEntity handleMissingServletRequestPartException(MissingServletRequestPartException e) {
-        // 打印堆栈信息
-        log.error(ThrowableUtil.getStackTrace(e));
-        return buildResponseEntity(ApiError.error(StatusCode.VERIFY_410003.getValue(), e.getMessage()));
+    public ResponseResult handleMissingServletRequestPartException(MissingServletRequestPartException e) {
+        return dealResponseResult(StatusCode.VERIFY_410003.getValue(), e);
     }
 
     /**
@@ -120,10 +107,8 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-    public ResponseEntity handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException e) {
-        // 打印堆栈信息
-        log.error(ThrowableUtil.getStackTrace(e));
-        return buildResponseEntity(ApiError.error(METHOD_NOT_ALLOWED.value(), e.getMessage()));
+    public ResponseResult handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException e) {
+        return dealResponseResult(StatusCode.CLIENT_400007.getValue(), e);
     }
 
     /**
@@ -133,10 +118,8 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler({HttpMediaTypeNotSupportedException.class})
-    public ResponseEntity handleHttpMediaTypeNotSupportedException(HttpMediaTypeNotSupportedException e) {
-        // 打印堆栈信息
-        log.error(ThrowableUtil.getStackTrace(e));
-        return buildResponseEntity(ApiError.error(UNSUPPORTED_MEDIA_TYPE.value(), e.getMessage()));
+    public ResponseResult handleHttpMediaTypeNotSupportedException(HttpMediaTypeNotSupportedException e) {
+        return dealResponseResult(StatusCode.CLIENT_400008.getValue(), e);
     }
 
     /**
@@ -146,10 +129,8 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler({SQLException.class})
-    public ResponseEntity handleSQLException(SQLException e) {
-        // 打印堆栈信息
-        log.error(ThrowableUtil.getStackTrace(e));
-        return buildResponseEntity(ApiError.error(StatusCode.SERVER_540000.getValue(), e.getMessage()));
+    public ResponseResult handleSqlException(SQLException e) {
+        return dealResponseResult(StatusCode.SERVER_540000.getValue(), e);
     }
 
     /**
@@ -159,10 +140,8 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler({SQLSyntaxErrorException.class})
-    public ResponseEntity handleSQLSyntaxErrorException(SQLSyntaxErrorException e) {
-        // 打印堆栈信息
-        log.error(ThrowableUtil.getStackTrace(e));
-        return buildResponseEntity(ApiError.error(StatusCode.SERVER_540000.getValue(), e.getMessage()));
+    public ResponseResult handleSqlSyntaxErrorException(SQLSyntaxErrorException e) {
+        return dealResponseResult(StatusCode.SERVER_540000.getValue(), e);
     }
 
     /**
@@ -172,10 +151,8 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity handlerHttpMessageNotReadableException(HttpMessageNotReadableException e) {
-        // 打印堆栈信息
-        log.error(ThrowableUtil.getStackTrace(e));
-        return buildResponseEntity(ApiError.error(StatusCode.CLIENT_400010.getValue(), e.getMessage()));
+    public ResponseResult handlerHttpMessageNotReadableException(HttpMessageNotReadableException e) {
+        return dealResponseResult(StatusCode.CLIENT_400010.getValue(), e);
     }
 
     /**
@@ -185,10 +162,8 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler(FileUploadBase.FileSizeLimitExceededException.class)
-    public ResponseEntity fileUploadBase$FileSizeLimitExceededException(FileUploadBase.FileSizeLimitExceededException e) {
-        // 打印堆栈信息
-        log.error(ThrowableUtil.getStackTrace(e));
-        return buildResponseEntity(ApiError.error(StatusCode.CLIENT_400011.getValue(), e.getMessage()));
+    public ResponseResult fileUploadBaseFileSizeLimitExceededException(FileUploadBase.FileSizeLimitExceededException e) {
+        return dealResponseResult(StatusCode.CLIENT_400011.getValue(), e);
     }
 
     /**
@@ -198,11 +173,21 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler({IllegalArgumentException.class})
-    public ResponseEntity handlerIllegalArgumentException(IllegalArgumentException e) {
-        // 打印堆栈信息
-        log.error(ThrowableUtil.getStackTrace(e));
-        return buildResponseEntity(ApiError.error(StatusCode.VERIFY_410008.getValue(), e.getMessage()));
+    public ResponseResult handlerIllegalArgumentException(IllegalArgumentException e) {
+        return dealResponseResult(StatusCode.VERIFY_410008.getValue(), e);
     }
+
+    /**
+     * 校验逻辑异常
+     *
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(VerifyException.class)
+    public ResponseResult verifyException(VerifyException e) {
+        return dealResponseResult(e.getCode(), e);
+    }
+
 
     /**
      * 展现层异常
@@ -211,10 +196,8 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler(ControllerException.class)
-    public ResponseEntity controllerException(ControllerException e) {
-        // 打印堆栈信息
-        log.error(ThrowableUtil.getStackTrace(e));
-        return buildResponseEntity(ApiError.error(StatusCode.SERVER_510000.getValue(), e.getMessage()));
+    public ResponseResult controllerException(ControllerException e) {
+        return dealResponseResult(e.getCode(), e);
     }
 
     /**
@@ -224,10 +207,8 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler(ManagerException.class)
-    public ResponseEntity managerException(ManagerException e) {
-        // 打印堆栈信息
-        log.error(ThrowableUtil.getStackTrace(e));
-        return buildResponseEntity(ApiError.error(StatusCode.SERVER_520000.getValue(), e.getMessage()));
+    public ResponseResult managerException(ManagerException e) {
+        return dealResponseResult(e.getCode(), e);
     }
 
     /**
@@ -237,10 +218,8 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler(ServiceException.class)
-    public ResponseEntity serviceException(ServiceException e) {
-        // 打印堆栈信息
-        log.error(ThrowableUtil.getStackTrace(e));
-        return buildResponseEntity(ApiError.error(StatusCode.SERVER_530000.getValue(), e.getMessage()));
+    public ResponseResult serviceException(ServiceException e) {
+        return dealResponseResult(e.getCode(), e);
     }
 
     /**
@@ -250,19 +229,20 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler(DaoException.class)
-    public ResponseEntity daoException(DaoException e) {
-        // 打印堆栈信息
-        log.error(ThrowableUtil.getStackTrace(e));
-        return buildResponseEntity(ApiError.error(StatusCode.SERVER_540000.getValue(), e.getMessage()));
+    public ResponseResult daoException(DaoException e) {
+        return dealResponseResult(e.getCode(), e);
     }
 
     /**
      * 统一返回
      *
-     * @param apiError
      * @return
      */
-    private ResponseEntity<ApiError> buildResponseEntity(ApiError apiError) {
-        return new ResponseEntity<>(apiError, HttpStatus.valueOf(apiError.getStatus()));
+    private <E extends Exception> ResponseResult dealResponseResult(Integer code, E e) {
+        // 异常码
+        log.error("业务异常,code:" + code);
+        // 打印堆栈信息
+        log.error("response_result:{}", ThrowableUtil.getStackTrace(e));
+        return ResponseResult.failed(code, e.getMessage());
     }
 }

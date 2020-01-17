@@ -28,6 +28,16 @@ public class VerifyException extends RuntimeException {
         this.e = e;
     }
 
+    /**
+     * 通过code查缓存的数据结果
+     *
+     * @param code
+     */
+    public VerifyException(Integer code) {
+        super(code.toString());
+        this.code = code;
+    }
+
     public VerifyException(Integer code, String msg) {
         super(msg);
         this.code = code;

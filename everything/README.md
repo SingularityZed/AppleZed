@@ -83,7 +83,9 @@ add ,delete,update,query  不要出现edit ，前端显示编辑，但是后端�
     public void setGeneratorService(GeneratorService generatorService) {
         this.generatorService = generatorService;
     }
-
+#### DTO
+DTO 的目的是为了数据转换，所以没必要加上swagger注解，而且直接继承实体类即可，
+而扩展字段就可以清晰的看到，但是mapper.xml中引用注意用getter方法
 
 ## 遇到问题
 #### 2019/12/13  

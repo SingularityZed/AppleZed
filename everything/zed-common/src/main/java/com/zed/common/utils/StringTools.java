@@ -1,6 +1,7 @@
 package com.zed.common.utils;
 
 import cn.hutool.core.io.resource.ClassPathResource;
+import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import eu.bitwalker.useragentutils.Browser;
 import eu.bitwalker.useragentutils.UserAgent;
 import org.apache.commons.lang3.StringUtils;
@@ -15,6 +16,8 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 字符串工具类, 继承org.apache.commons.lang3.StringUtils类
@@ -44,6 +47,50 @@ public class StringTools extends StringUtils {
 
 
     /*--start--驼峰命名法工具----*/
+
+    private static Pattern linePattern = Pattern.compile("_(\\w)");
+    private static Pattern humpPattern = Pattern.compile("[A-Z]");
+
+    public static void main(String[] args) {
+        String lineToHump = underlineToHump("f_parent_no_leader");
+        // fParentNoLeader
+        System.out.println(lineToHump);
+        // f_parent_no_leader
+        System.out.println(humpToUnderline(lineToHump));
+    }
+
+    /**
+     * 下划线转驼峰
+     */
+    public static String underlineToHump(String value) {
+        value = value.toLowerCase();
+        Matcher matcher = linePattern.matcher(value);
+        StringBuffer sb = new StringBuffer();
+        while (matcher.find()) {
+            matcher.appendReplacement(sb, matcher.group(1).toUpperCase());
+        }
+        matcher.appendTail(sb);
+        return sb.toString();
+    }
+
+    /**
+     * 驼峰转下划线
+     *
+     * @param value
+     * @return
+     */
+    public static String humpToUnderline(String value) {
+        if (StringUtils.isBlank(value)) {
+            return value;
+        }
+        Matcher matcher = humpPattern.matcher(value);
+        StringBuffer sb = new StringBuffer();
+        while (matcher.find()) {
+            matcher.appendReplacement(sb, StringPool.UNDERSCORE + matcher.group(0).toLowerCase());
+        }
+        matcher.appendTail(sb);
+        return sb.toString();
+    }
 
     /**
      * 下划线转驼峰

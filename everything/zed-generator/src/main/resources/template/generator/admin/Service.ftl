@@ -26,7 +26,7 @@ public interface ${className}Service extends IService<${className}>{
     * @param dto 分页参数
     * @return
     */
-    Page getPageList(PageParam pageParam, ${className}DTO dto);
+    Page searchPage(PageParam pageParam, ${className}DTO dto);
 
     /**
      * 获取详情

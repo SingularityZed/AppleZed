@@ -60,7 +60,7 @@ public class ${className}ServiceImpl extends ServiceImpl<${className}Mapper, ${c
     */
     @Override
     @Cacheable
-    public Page getPageList(PageParam pageParam, ${className}DTO dto){
+    public Page searchPage(PageParam pageParam, ${className}DTO dto){
         Page<${className}> page =pageParam.buildPage();
         Page<${className}> ${changeClassName}Page = this.page(page, new LambdaQueryWrapper<${className}>() .eq(${className}::getIsDeleted, false));
         return AutoMapperUtil.mappingPage(${changeClassName}Page, ${className}VO.class);

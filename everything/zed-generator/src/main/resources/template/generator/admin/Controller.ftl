@@ -28,16 +28,16 @@ public class ${className}Controller {
      @Autowired
     private  ${className}Service ${changeClassName}Service;
 
-    @GetMapping("/pageList")
     @ApiOperation("分页查询${className}")
+    @GetMapping("/pageList")
     @PreAuthorize("@el.check('${changeClassName}:list')")
     public ResponseEntity searchPage(PageParam pageParam, ${className}QueryAO queryAO){
         ${className}DTO dto = AutoMapperUtil.toPOJO(queryAO, ${className}DTO.class);
-        return new ResponseEntity<>(${changeClassName}Service.getPageList(pageParam,dto),HttpStatus.OK);
+        return new ResponseEntity<>(${changeClassName}Service.searchPage(pageParam,dto),HttpStatus.OK);
     }
 
-    @GetMapping("/{${pkChangeColName}}")
     @ApiOperation("查询${className}")
+    @GetMapping("/{${pkChangeColName}}")
     @PreAuthorize("@el.check('${changeClassName}:detail')")
     public ResponseEntity get${className}(@PathVariable ${pkColumnType} ${pkChangeColName}){
         ${className}VO vo = ${changeClassName}Service.get${className}ById(${pkChangeColName});
@@ -45,9 +45,9 @@ public class ${className}Controller {
     }
 
 
-    @PostMapping("/add")
     @Log("新增${className}")
     @ApiOperation("新增${className}")
+    @PostMapping("/add")
     @PreAuthorize("@el.check('${changeClassName}:add')")
     public ResponseEntity add(@Validated @RequestBody ${className}AddAO addAO){
         // 转换
@@ -57,9 +57,9 @@ public class ${className}Controller {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PutMapping("/update")
     @Log("修改${className}")
     @ApiOperation("修改${className}")
+    @PutMapping("/update")
     @PreAuthorize("@el.check('${changeClassName}:edit')")
     public ResponseEntity update(@Validated @RequestBody ${className}UpdateAO updateAO){
         // 转换
@@ -69,9 +69,9 @@ public class ${className}Controller {
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping("/{${pkChangeColName}}")
     @Log("删除${className}")
     @ApiOperation("删除${className}")
+    @DeleteMapping("/{${pkChangeColName}}")
     @PreAuthorize("@el.check('${changeClassName}:del')")
     public ResponseEntity delete(@PathVariable ${pkColumnType} ${pkChangeColName}){
         ${changeClassName}Service.delete(${pkChangeColName});

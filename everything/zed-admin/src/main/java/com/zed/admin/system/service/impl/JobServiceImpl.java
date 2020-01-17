@@ -20,6 +20,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * JobServiceImpl
  *
@@ -42,10 +44,11 @@ public class JobServiceImpl extends ServiceImpl<JobMapper, Job> implements JobSe
      */
     @Override
     @Cacheable
-    public Page getPageList(PageParam pageParam, JobDTO dto) {
-        Page<Job> page = pageParam.buildPage();
-        Page<Job> jobPage = this.page(page, new LambdaQueryWrapper<Job>().eq(Job::getIsDeleted, false));
-        return AutoMapperUtil.mappingPage(jobPage, JobVO.class);
+    public Page searchPage(PageParam pageParam, JobDTO dto) {
+        Page<JobVO> page = pageParam.buildPage();
+        List<JobVO> list = baseMapper.searchPage(page, dto);
+        page.setRecords(list);
+        return page;
     }
 
     /**

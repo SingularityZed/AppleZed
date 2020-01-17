@@ -36,7 +36,7 @@ public abstract class BaseEntity<T extends Model<?>> extends Model<T> {
      * 创建者
      */
     @TableField(value = "create_by", fill = FieldFill.INSERT)
-    protected Long createBy;
+    protected String createBy;
 
     /**
      * 创建日期
@@ -48,7 +48,7 @@ public abstract class BaseEntity<T extends Model<?>> extends Model<T> {
      * 更新者
      */
     @TableField(value = "update_by", fill = FieldFill.INSERT_UPDATE)
-    protected Long updateBy;
+    protected String updateBy;
 
     /**
      * 更新日期

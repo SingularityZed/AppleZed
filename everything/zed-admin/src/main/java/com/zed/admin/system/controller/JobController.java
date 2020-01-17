@@ -6,6 +6,7 @@ import com.zed.admin.system.pojo.ao.JobUpdateAO;
 import com.zed.admin.system.pojo.dto.JobDTO;
 import com.zed.admin.system.pojo.vo.JobVO;
 import com.zed.admin.system.service.JobService;
+import com.zed.admin.system.verify.JobVerify;
 import com.zed.common.base.PageParam;
 import com.zed.common.utils.AutoMapperUtil;
 import io.swagger.annotations.Api;
@@ -22,42 +23,42 @@ import org.springframework.web.bind.annotation.*;
  * @author zed
  * @date 2020-01-16
  */
-@Api(tags = "Job管理")
+@Api(tags = "岗位管理")
 @RestController
-@RequestMapping("/api/job")
+@RequestMapping("/api/zed-admin/job")
 public class JobController {
 
     @Autowired
     private JobService jobService;
+    @Autowired
+    private JobVerify jobVerify;
 
-
+    @ApiOperation("分页查询岗位")
     @GetMapping("/pageList")
-    @ApiOperation("分页查询Job")
     public ResponseEntity searchPage(PageParam pageParam, JobQueryAO queryAO) {
         JobDTO dto = AutoMapperUtil.toPOJO(queryAO, JobDTO.class);
-        return new ResponseEntity<>(jobService.getPageList(pageParam, dto), HttpStatus.OK);
+        return new ResponseEntity<>(jobService.searchPage(pageParam, dto), HttpStatus.OK);
     }
 
+    @ApiOperation("查询岗位详情")
     @GetMapping("/{id}")
-    @ApiOperation("查询Job")
     public ResponseEntity getJob(@PathVariable Long id) {
         JobVO vo = jobService.getJobById(id);
         return new ResponseEntity<>(vo, HttpStatus.OK);
     }
 
-
-    @PostMapping("/add")
     @ApiOperation("新增Job")
+    @PostMapping("/add")
     public ResponseEntity add(@Validated @RequestBody JobAddAO addAO) {
         // 转换
         JobDTO dto = AutoMapperUtil.toPOJO(addAO, JobDTO.class);
-//        jobVerify.verifyRepeat(dto);
+        jobVerify.verifyRepeat(dto);
         jobService.addJob(dto);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PutMapping("/update")
     @ApiOperation("修改Job")
+    @PutMapping("/update")
     public ResponseEntity update(@Validated @RequestBody JobUpdateAO updateAO) {
         // 转换
         JobDTO dto = AutoMapperUtil.toPOJO(updateAO, JobDTO.class);
@@ -66,8 +67,8 @@ public class JobController {
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping("/{id}")
     @ApiOperation("删除Job")
+    @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable Long id) {
         jobService.deleteJob(id);
         return new ResponseEntity(HttpStatus.OK);

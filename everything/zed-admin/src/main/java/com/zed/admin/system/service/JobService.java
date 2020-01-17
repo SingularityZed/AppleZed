@@ -23,7 +23,7 @@ public interface JobService extends IService<Job> {
      * @param dto       分页参数
      * @return
      */
-    Page getPageList(PageParam pageParam, JobDTO dto);
+    Page searchPage(PageParam pageParam, JobDTO dto);
 
     /**
      * 获取详情
