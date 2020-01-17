@@ -24,7 +24,15 @@ public class DaoException extends RuntimeException {
         super(msg);
         this.e = e;
     }
-
+    /**
+     * 通过code查缓存的数据结果
+     *
+     * @param code
+     */
+    public DaoException(Integer code) {
+        super(code.toString());
+        this.code = code;
+    }
     public DaoException(Integer code, String msg) {
         super(msg);
         this.code = code;

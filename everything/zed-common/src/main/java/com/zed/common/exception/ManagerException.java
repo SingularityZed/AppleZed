@@ -27,7 +27,15 @@ public class ManagerException extends RuntimeException {
         super(msg);
         this.e = e;
     }
-
+    /**
+     * 通过code查缓存的数据结果
+     *
+     * @param code
+     */
+    public ManagerException(Integer code) {
+        super(code.toString());
+        this.code = code;
+    }
     public ManagerException(Integer code, String msg) {
         super(msg);
         this.code = code;

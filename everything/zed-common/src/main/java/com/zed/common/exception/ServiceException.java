@@ -27,7 +27,15 @@ public class ServiceException extends RuntimeException {
         super(msg);
         this.e = e;
     }
-
+    /**
+     * 通过code查缓存的数据结果
+     *
+     * @param code
+     */
+    public ServiceException(Integer code) {
+        super(code.toString());
+        this.code = code;
+    }
     public ServiceException(Integer code, String msg) {
         super(msg);
         this.code = code;
