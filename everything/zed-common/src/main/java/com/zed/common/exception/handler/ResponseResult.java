@@ -34,13 +34,6 @@ public class ResponseResult<T> extends ConcurrentHashMap<String, Object> {
         return RESPONSE_RESULT;
     }
 
-    public static ResponseResult succeed(String message) {
-        RESPONSE_RESULT.setCode(StatusCode.RESULT_OK.getValue());
-        RESPONSE_RESULT.setMessage(message);
-        RESPONSE_RESULT.setServerTime();
-        return RESPONSE_RESULT;
-    }
-
     public static <T> ResponseResult succeed(T data) {
         RESPONSE_RESULT.setCode(StatusCode.RESULT_OK.getValue());
         RESPONSE_RESULT.setMessage(SUCCESS);
@@ -49,12 +42,10 @@ public class ResponseResult<T> extends ConcurrentHashMap<String, Object> {
         return RESPONSE_RESULT;
     }
 
-    public static <T> ResponseResult succeed(T data, String message) {
-        RESPONSE_RESULT.setCode(StatusCode.RESULT_OK.getValue());
-        RESPONSE_RESULT.setMessage(message);
-        RESPONSE_RESULT.setServerTime();
-        RESPONSE_RESULT.setData(data);
-        return RESPONSE_RESULT;
+    public static <T> ResponseResult succeedWith(T data, String message) {
+        ResponseResult result = succeed( data );
+        result.setMessage( message );
+        return result;
     }
 
     public static ResponseResult failed(Integer code) {

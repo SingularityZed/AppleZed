@@ -48,6 +48,12 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
         return AutoMapperUtil.mappingPage(menuPage, MenuVO.class);
     }
 
+    //查询全部，应该可以跟下边的合并
+
+    //列表查询菜单
+
+
+
     /**
      * 获取详情
      *
