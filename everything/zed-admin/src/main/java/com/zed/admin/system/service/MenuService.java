@@ -8,6 +8,9 @@ import com.zed.admin.system.pojo.dto.MenuVerifyDTO;
 import com.zed.admin.system.pojo.vo.MenuVO;
 import com.zed.common.base.PageParam;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * MenuService
  *
@@ -16,6 +19,16 @@ import com.zed.common.base.PageParam;
  */
 public interface MenuService extends IService<Menu> {
 
+
+    /**
+     * 
+     * @param menuVOList 
+     * @return
+     */
+    Map<String,Object> buildMenus(List<MenuVO> menuVOList);
+    
+    
+    
     /**
      * 分页查询
      *
@@ -62,4 +75,7 @@ public interface MenuService extends IService<Menu> {
      */
     MenuVerifyDTO verifyRepeat(MenuDTO dto);
 
+    List<MenuVO> buildTree(List<MenuDTO> menuDTOList);
+
+ 
 }

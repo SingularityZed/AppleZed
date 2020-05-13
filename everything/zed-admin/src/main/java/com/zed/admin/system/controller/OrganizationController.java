@@ -7,6 +7,7 @@ import com.zed.admin.system.pojo.dto.OrganizationDTO;
 import com.zed.admin.system.pojo.vo.OrganizationVO;
 import com.zed.admin.system.service.OrganizationService;
 import com.zed.common.base.PageParam;
+import com.zed.common.exception.handler.ResponseResult;
 import com.zed.common.utils.AutoMapperUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -33,44 +34,44 @@ public class OrganizationController {
 
     @GetMapping("/pageList")
     @ApiOperation("分页查询Organization")
-    public ResponseEntity searchPage(PageParam pageParam, OrganizationQueryAO queryAO) {
+    public ResponseResult searchPage(PageParam pageParam, OrganizationQueryAO queryAO) {
         OrganizationDTO dto = AutoMapperUtil.toPOJO(queryAO, OrganizationDTO.class);
-        return new ResponseEntity<>(organizationService.getPageList(pageParam, dto), HttpStatus.OK);
+        return ResponseResult.succeed(organizationService.getPageList(pageParam, dto));
     }
 
     @GetMapping("/{id}")
     @ApiOperation("查询Organization")
-    public ResponseEntity getOrganization(@PathVariable Long id) {
+    public ResponseResult getOrganization(@PathVariable Long id) {
         OrganizationVO vo = organizationService.getOrganizationById(id);
-        return new ResponseEntity<>(vo, HttpStatus.OK);
+        return ResponseResult.succeed(vo);
     }
 
 
     @PostMapping("/add")
     @ApiOperation("新增Organization")
-    public ResponseEntity add(@Validated @RequestBody OrganizationAddAO addAO) {
+    public ResponseResult add(@Validated @RequestBody OrganizationAddAO addAO) {
         // 转换
         OrganizationDTO dto = AutoMapperUtil.toPOJO(addAO, OrganizationDTO.class);
 //        organizationVerify.verifyRepeat(dto);
         organizationService.addOrganization(dto);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return ResponseResult.succeed();
     }
 
     @PutMapping("/update")
     @ApiOperation("修改Organization")
-    public ResponseEntity update(@Validated @RequestBody OrganizationUpdateAO updateAO) {
+    public ResponseResult update(@Validated @RequestBody OrganizationUpdateAO updateAO) {
         // 转换
         OrganizationDTO dto = AutoMapperUtil.toPOJO(updateAO, OrganizationDTO.class);
 //        organizationVerify.verifyRepeat(dto);
         organizationService.updateOrganization(dto);
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+        return ResponseResult.succeed();
     }
 
     @DeleteMapping("/{id}")
     @ApiOperation("删除Organization")
-    public ResponseEntity delete(@PathVariable Long id) {
+    public ResponseResult delete(@PathVariable Long id) {
         organizationService.deleteOrganization(id);
-        return new ResponseEntity(HttpStatus.OK);
+        return ResponseResult.succeed();
     }
 
 }

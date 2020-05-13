@@ -16,16 +16,16 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author zed
  * @date 2020/1/17 12:15
  */
-public class ResponseResult<T> extends ConcurrentHashMap<String, Object> {
+public class ResponseResult extends ConcurrentHashMap<String, Object> {
 
-    private final static ResponseResult RESPONSE_RESULT = new ResponseResult();
+    private static final ResponseResult RESPONSE_RESULT = new ResponseResult();
 
-    private final static String SUCCESS = "success";
-    private final static String CODE = "code";
-    private final static String MESSAGE = "message";
-    private final static String DATA = "data";
-    private final static String SERVER_TIME = "serverTime";
-    private final static String TIMESTAMP = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+    private static final String SUCCESS = "success";
+    private static final String CODE = "code";
+    private static final String MESSAGE = "message";
+    private static final String DATA = "data";
+    private static final String SERVER_TIME = "serverTime";
+    private static final String TIMESTAMP = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 
     public static ResponseResult succeed() {
         RESPONSE_RESULT.setCode(StatusCode.RESULT_OK.getValue());
@@ -43,8 +43,8 @@ public class ResponseResult<T> extends ConcurrentHashMap<String, Object> {
     }
 
     public static <T> ResponseResult succeedWith(T data, String message) {
-        ResponseResult result = succeed( data );
-        result.setMessage( message );
+        ResponseResult result = succeed(data);
+        result.setMessage(message);
         return result;
     }
 

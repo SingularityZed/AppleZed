@@ -37,41 +37,41 @@ public class GenUtils {
     private static final String EXTRA = "auto_increment";
 
 
-    private final static String FILE_CONTROLLER = "Controller.java";
-    private final static String FILE_MANAGER = "Manager.java";
-    private final static String FILE_SERVICE = "Service.java";
-    private final static String FILE_SERVICE_IMPL = "ServiceImpl.java";
-    private final static String FILE_ENTITY = ".java";
-    private final static String FILE_MAPPER = "Mapper.java";
-    private final static String FILE_MAPPER_XML = "Mapper.xml";
-    private final static String FILE_INFO = "Info.java";
-    private final static String FILE_DTO = "DTO.java";
-    private final static String FILE_VO = "VO.java";
-    private final static String FILE_DETAIL_VO = "DetailVO.java";
-    private final static String FILE_QUERY_AO = "QueryAO.java";
-    private final static String FILE_ADD_AO = "AddAO.java";
-    private final static String FILE_UPDATE_AO = "UpdateAO.java";
-    private final static String FILE_DELETE_AO = "DeleteAO.java";
-    private final static String FILE_VERIFY = "Verify.java";
-    private final static String FILE_ENUM = "Enum.java";
+    private static final String FILE_CONTROLLER = "Controller.java";
+    private static final String FILE_MANAGER = "Manager.java";
+    private static final String FILE_SERVICE = "Service.java";
+    private static final String FILE_SERVICE_IMPL = "ServiceImpl.java";
+    private static final String FILE_ENTITY = ".java";
+    private static final String FILE_MAPPER = "Mapper.java";
+    private static final String FILE_MAPPER_XML = "Mapper.xml";
+    private static final String FILE_INFO = "Info.java";
+    private static final String FILE_DTO = "DTO.java";
+    private static final String FILE_VO = "VO.java";
+    private static final String FILE_DETAIL_VO = "DetailVO.java";
+    private static final String FILE_QUERY_AO = "QueryAO.java";
+    private static final String FILE_ADD_AO = "AddAO.java";
+    private static final String FILE_UPDATE_AO = "UpdateAO.java";
+    private static final String FILE_DELETE_AO = "DeleteAO.java";
+    private static final String FILE_VERIFY = "Verify.java";
+    private static final String FILE_ENUM = "Enum.java";
 
-    private final static String FILE_NAME_CONTROLLER = "Controller";
-    private final static String FILE_NAME_MANAGER = "Manager";
-    private final static String FILE_NAME_SERVICE = "Service";
-    private final static String FILE_NAME_SERVICE_IMPL = "ServiceImpl";
-    private final static String FILE_NAME_ENTITY = "Entity";
-    private final static String FILE_NAME_MAPPER = "Mapper";
-    private final static String FILE_NAME_MAPPER_XML = "MapperXML";
-    private final static String FILE_NAME_INFO = "Info";
-    private final static String FILE_NAME_DTO = "DTO";
-    private final static String FILE_NAME_VO = "VO";
-    private final static String FILE_NAME_DETAIL_VO = "DetailVO";
-    private final static String FILE_NAME_QUERY_AO = "QueryAO";
-    private final static String FILE_NAME_ADD_AO = "AddAO";
-    private final static String FILE_NAME_UPDATE_AO = "UpdateAO";
-    private final static String FILE_NAME_DELETE_AO = "DeleteAO";
-    private final static String FILE_NAME_VERIFY = "Verify";
-    private final static String FILE_NAME_ENUM = "Enum";
+    private static final String FILE_NAME_CONTROLLER = "Controller";
+    private static final String FILE_NAME_MANAGER = "Manager";
+    private static final String FILE_NAME_SERVICE = "Service";
+    private static final String FILE_NAME_SERVICE_IMPL = "ServiceImpl";
+    private static final String FILE_NAME_ENTITY = "Entity";
+    private static final String FILE_NAME_MAPPER = "Mapper";
+    private static final String FILE_NAME_MAPPER_XML = "MapperXML";
+    private static final String FILE_NAME_INFO = "Info";
+    private static final String FILE_NAME_DTO = "DTO";
+    private static final String FILE_NAME_VO = "VO";
+    private static final String FILE_NAME_DETAIL_VO = "DetailVO";
+    private static final String FILE_NAME_QUERY_AO = "QueryAO";
+    private static final String FILE_NAME_ADD_AO = "AddAO";
+    private static final String FILE_NAME_UPDATE_AO = "UpdateAO";
+    private static final String FILE_NAME_DELETE_AO = "DeleteAO";
+    private static final String FILE_NAME_VERIFY = "Verify";
+    private static final String FILE_NAME_ENUM = "Enum";
 
     /**
      * 获取后端代码模板名称

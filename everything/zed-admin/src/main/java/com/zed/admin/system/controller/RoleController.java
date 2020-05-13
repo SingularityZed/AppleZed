@@ -9,6 +9,7 @@ import com.zed.admin.system.service.RoleService;
 import com.zed.admin.system.verify.RoleVerify;
 import com.zed.admin.system.verify.UserVerify;
 import com.zed.common.base.PageParam;
+import com.zed.common.exception.handler.ResponseResult;
 import com.zed.common.utils.AutoMapperUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -37,44 +38,44 @@ public class RoleController {
 
     @GetMapping("/pageList")
     @ApiOperation("分页查询Role")
-    public ResponseEntity searchPage(PageParam pageParam, RoleQueryAO queryAO) {
+    public ResponseResult searchPage(PageParam pageParam, RoleQueryAO queryAO) {
         RoleDTO dto = AutoMapperUtil.toPOJO(queryAO, RoleDTO.class);
-        return new ResponseEntity<>(roleService.getPageList(pageParam, dto), HttpStatus.OK);
+        return ResponseResult.succeed(roleService.getPageList(pageParam, dto));
     }
 
     @GetMapping("/{roleId}")
     @ApiOperation("查询Role")
-    public ResponseEntity getRole(@PathVariable Long roleId) {
+    public ResponseResult getRole(@PathVariable Long roleId) {
         RoleVO vo = roleService.getRoleById(roleId);
-        return new ResponseEntity<>(vo, HttpStatus.OK);
+        return ResponseResult.succeed(vo);
     }
 
 
     @PostMapping("/add")
     @ApiOperation("新增Role")
-    public ResponseEntity add(@Validated @RequestBody RoleAddAO addAO) {
+    public ResponseResult add(@Validated @RequestBody RoleAddAO addAO) {
         // 转换
         RoleDTO dto = AutoMapperUtil.toPOJO(addAO, RoleDTO.class);
 //        roleVerify.verifyRepeat(dto);
         roleService.addRole(dto);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return ResponseResult.succeed();
     }
 
     @PutMapping("/update")
     @ApiOperation("修改Role")
-    public ResponseEntity update(@Validated @RequestBody RoleUpdateAO updateAO) {
+    public ResponseResult update(@Validated @RequestBody RoleUpdateAO updateAO) {
         // 转换
         RoleDTO dto = AutoMapperUtil.toPOJO(updateAO, RoleDTO.class);
 //        roleVerify.verifyRepeat(dto);
         roleService.updateRole(dto);
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+        return ResponseResult.succeed();
     }
 
     @DeleteMapping("/{roleId}")
     @ApiOperation("删除Role")
-    public ResponseEntity delete(@PathVariable Long roleId) {
+    public ResponseResult delete(@PathVariable Long roleId) {
         roleService.deleteRole(roleId);
-        return new ResponseEntity(HttpStatus.OK);
+        return ResponseResult.succeed();
     }
 
 }
