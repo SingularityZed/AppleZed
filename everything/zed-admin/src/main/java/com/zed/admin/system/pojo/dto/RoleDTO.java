@@ -1,14 +1,15 @@
 package com.zed.admin.system.pojo.dto;
 
 import lombok.Data;
-import java.sql.Timestamp;
+
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 
 /**
-* @author zed
-* @date 2020-01-16
-*/
+ * @author zed
+ * @date 2020-01-16
+ */
 @Data
 public class RoleDTO implements Serializable {
 
@@ -29,7 +30,6 @@ public class RoleDTO implements Serializable {
 
     // 商户ID
     private Long orgId;
-
 
 
     // 角色编码

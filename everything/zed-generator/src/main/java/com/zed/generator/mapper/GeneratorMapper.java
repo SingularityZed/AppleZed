@@ -1,8 +1,6 @@
 package com.zed.generator.mapper;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.zed.common.base.PageParam;
-import com.zed.generator.config.GenConfig;
 import com.zed.generator.info.ColumnInfo;
 import com.zed.generator.info.TableInfo;
 import org.apache.ibatis.annotations.Mapper;
@@ -21,7 +19,7 @@ public interface GeneratorMapper {
     /**
      * 查询数据库元数据
      *
-     * @param page 分页参数
+     * @param page      分页参数
      * @param database
      * @param tableName 表名
      * @return /

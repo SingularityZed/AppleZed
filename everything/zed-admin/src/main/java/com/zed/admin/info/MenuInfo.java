@@ -1,15 +1,15 @@
 package com.zed.admin.info;
 
 import lombok.Data;
-import java.sql.Timestamp;
+
 import java.io.Serializable;
 import java.util.Date;
 
 
 /**
-* @author zed
-* @date 2020-01-16
-*/
+ * @author zed
+ * @date 2020-01-16
+ */
 @Data
 public class MenuInfo implements Serializable {
 

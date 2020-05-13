@@ -19,50 +19,50 @@ import javax.servlet.http.HttpServletResponse;
 */
 public interface ${className}Service extends IService<${className}>{
 
-    /**
-    * 分页查询
-    *
-    * @param pageParam 条件参数
-    * @param dto 分页参数
-    * @return
-    */
-    Page searchPage(PageParam pageParam, ${className}DTO dto);
+/**
+* 分页查询
+*
+* @param pageParam 条件参数
+* @param dto 分页参数
+* @return
+*/
+Page searchPage(PageParam pageParam, ${className}DTO dto);
 
-    /**
-     * 获取详情
-     *
-     * @param ${pkChangeColName} ID
-     * @return ${className}VO
-     */
-    ${className}VO get${className}ById(${pkColumnType} ${pkChangeColName});
+/**
+* 获取详情
+*
+* @param ${pkChangeColName} ID
+* @return ${className}VO
+*/
+${className}VO get${className}ById(${pkColumnType} ${pkChangeColName});
 
-    /**
-    * 新增
-    *
-    * @param dto
-    */
-    void add${className}(${className}DTO dto);
+/**
+* 新增
+*
+* @param dto
+*/
+void add${className}(${className}DTO dto);
 
-    /**
-    * 更新
-    *
-    * @param dto
-    */
-    void update${className}(${className}DTO dto);
+/**
+* 更新
+*
+* @param dto
+*/
+void update${className}(${className}DTO dto);
 
-    /**
-    * 删除
-    *
-    * @param ${pkChangeColName}
-    */
-    void delete${className}(${pkColumnType} ${pkChangeColName});
+/**
+* 删除
+*
+* @param ${pkChangeColName}
+*/
+void delete${className}(${pkColumnType} ${pkChangeColName});
 
-    /**
-    * 校验
-    *
-    * @param dto
-    * @return
-    */
-    ${className}VerifyDTO verifyRepeat(${className}DTO dto);
+/**
+* 校验
+*
+* @param dto
+* @return
+*/
+${className}VerifyDTO verifyRepeat(${className}DTO dto);
 
 }

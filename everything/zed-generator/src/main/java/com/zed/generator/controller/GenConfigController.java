@@ -21,7 +21,7 @@ public class GenConfigController {
 
 
     @Autowired
-    private  GenConfigService genConfigService;
+    private GenConfigService genConfigService;
 
 
     @ApiOperation("查询配置")

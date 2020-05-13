@@ -1,14 +1,15 @@
 package com.zed.admin.system.pojo.ao;
 
 import lombok.Data;
-import java.sql.Timestamp;
+
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 
 /**
-* @author zed
-* @date 2020-01-16
-*/
+ * @author zed
+ * @date 2020-01-16
+ */
 @Data
 public class JobDeleteAO implements Serializable {
 

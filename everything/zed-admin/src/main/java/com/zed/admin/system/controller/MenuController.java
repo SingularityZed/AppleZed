@@ -12,8 +12,6 @@ import com.zed.common.utils.AutoMapperUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,8 +36,8 @@ public class MenuController {
     @GetMapping("/build")
     @ApiOperation("获取前端所需菜单")
     public ResponseResult buildMenus() {
-        List<MenuDTO> menuDTOList=new ArrayList<>();
-        List<MenuVO> menuVOList=menuService.buildTree(menuDTOList);
+        List<MenuDTO> menuDTOList = new ArrayList<>();
+        List<MenuVO> menuVOList = menuService.buildTree(menuDTOList);
         return ResponseResult.succeed(menuService.buildMenus(menuVOList));
     }
 
@@ -47,13 +45,10 @@ public class MenuController {
     //返回全部菜单
     @GetMapping("list")
     @ApiOperation("查询菜单")
-    public ResponseResult searchPage(PageParam pageParam ,MenuQueryAO queryAO) {
+    public ResponseResult searchPage(PageParam pageParam, MenuQueryAO queryAO) {
         MenuDTO dto = AutoMapperUtil.toPOJO(queryAO, MenuDTO.class);
-        return ResponseResult.succeed(menuService.getPageList(pageParam,dto));
+        return ResponseResult.succeed(menuService.getPageList(pageParam, dto));
     }
-
-
-
 
 
 //    @GetMapping("list")

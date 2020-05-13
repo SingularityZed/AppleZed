@@ -58,6 +58,6 @@ public class BaseMybatisPlusConfig implements MetaObjectHandler {
      */
     @Override
     public void updateFill(MetaObject metaObject) {
-        this.setFieldValByName(UPDATE_TIME,new Date(),metaObject);
+        this.setFieldValByName(UPDATE_TIME, new Date(), metaObject);
     }
 }

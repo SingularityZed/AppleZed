@@ -1,293 +1,290 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.zed</groupId>
-	<artifactId>everything</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+    <groupId>com.zed</groupId>
+    <artifactId>everything</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-	<name>everything</name>
-	<description>Spring Cloud And Angular</description>
+    <name>everything</name>
+    <description>Spring Cloud And Angular</description>
 
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.2.2.RELEASE</version>
-		<relativePath/>
-	</parent>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.2.RELEASE</version>
+        <relativePath/>
+    </parent>
 
-	<modules>
-		<module>zed-admin</module>
+    <modules>
+        <module>zed-admin</module>
         <module>zed-common</module>
-		<module>zed-business</module>
-		<module>zed-redis</module>
-		<module>zed-getaway</module>
-		<module>zed-tools</module>
-		<module>zed-config</module>
-		<module>zed-generator</module>
-		<module>zed-thymeleaf</module>
-	</modules>
+        <module>zed-business</module>
+        <module>zed-redis</module>
+        <module>zed-getaway</module>
+        <module>zed-tools</module>
+        <module>zed-config</module>
+        <module>zed-generator</module>
+        <module>zed-thymeleaf</module>
+    </modules>
 
-	<properties>
-		<java.version>1.8</java.version>
-		<commons-pool2.version>2.5.0</commons-pool2.version>
-		<druid.version>1.1.10</druid.version>
-		<mybatis-plus-boot-starter.version>3.3.0</mybatis-plus-boot-starter.version>
-		<security-oauth2.version>2.4.0.RELEASE</security-oauth2.version>
-		<security-jwt.version>1.1.0.RELEASE</security-jwt.version>
-		<hutool.version>4.6.1</hutool.version>
-		<fastjson.version>1.2.62</fastjson.version>
-		<lombok-version>1.18.10</lombok-version>
-		<log4jdbc.version>1.16</log4jdbc.version>
-		<!--swagger 文档-->
-		<swagger.version>2.9.2</swagger.version>
-	</properties>
+    <properties>
+        <java.version>1.8</java.version>
+        <commons-pool2.version>2.5.0</commons-pool2.version>
+        <druid.version>1.1.10</druid.version>
+        <mybatis-plus-boot-starter.version>3.3.0</mybatis-plus-boot-starter.version>
+        <security-oauth2.version>2.4.0.RELEASE</security-oauth2.version>
+        <security-jwt.version>1.1.0.RELEASE</security-jwt.version>
+        <hutool.version>4.6.1</hutool.version>
+        <fastjson.version>1.2.62</fastjson.version>
+        <lombok-version>1.18.10</lombok-version>
+        <log4jdbc.version>1.16</log4jdbc.version>
+        <!--swagger 文档-->
+        <swagger.version>2.9.2</swagger.version>
+    </properties>
 
-	<dependencies>
-		<!--Spring boot start-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
+    <dependencies>
+        <!--Spring boot start-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
 
-		<!--jpa包含javax-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
+        <!--jpa包含javax-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
 
-		<!-- spring security -->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-security</artifactId>-->
-<!--		</dependency>-->
-		<!-- spring cache -->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-cache</artifactId>-->
-<!--		</dependency>-->
-		<!-- redis -->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-data-redis</artifactId>-->
-<!--		</dependency>-->
-		<!--Spring boot end-->
-
-
-		<!--spring2.0集成redis所需common-pool2-->
-<!--		<dependency>-->
-<!--			<groupId>org.apache.commons</groupId>-->
-<!--			<artifactId>commons-pool2</artifactId>-->
-<!--			<version>${commons-pool2.version}</version>-->
-<!--		</dependency>-->
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-		</dependency>
-
-		<!--mybatis-plus依赖包-->
-		<dependency>
-			<groupId>com.baomidou</groupId>
-			<artifactId>mybatis-plus-boot-starter</artifactId>
-			<version>${mybatis-plus-boot-starter.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.baomidou</groupId>
-			<artifactId>mybatis-plus-extension</artifactId>
-			<version>${mybatis-plus-boot-starter.version}</version>
-		</dependency>
+        <!-- spring security -->
+        <!--		<dependency>-->
+        <!--			<groupId>org.springframework.boot</groupId>-->
+        <!--			<artifactId>spring-boot-starter-security</artifactId>-->
+        <!--		</dependency>-->
+        <!-- spring cache -->
+        <!--		<dependency>-->
+        <!--			<groupId>org.springframework.boot</groupId>-->
+        <!--			<artifactId>spring-boot-starter-cache</artifactId>-->
+        <!--		</dependency>-->
+        <!-- redis -->
+        <!--		<dependency>-->
+        <!--			<groupId>org.springframework.boot</groupId>-->
+        <!--			<artifactId>spring-boot-starter-data-redis</artifactId>-->
+        <!--		</dependency>-->
+        <!--Spring boot end-->
 
 
-		<!--监控sql日志-->
-<!--		<dependency>-->
-<!--			<groupId>org.bgee.log4jdbc-log4j2</groupId>-->
-<!--			<artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>-->
-<!--			<version>${log4jdbc.version}</version>-->
-<!--		</dependency>-->
+        <!--spring2.0集成redis所需common-pool2-->
+        <!--		<dependency>-->
+        <!--			<groupId>org.apache.commons</groupId>-->
+        <!--			<artifactId>commons-pool2</artifactId>-->
+        <!--			<version>${commons-pool2.version}</version>-->
+        <!--		</dependency>-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
 
-		<!--Mysql依赖包-->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-<!--		&lt;!&ndash; druid数据源驱动 &ndash;&gt;-->
-<!--		<dependency>-->
-<!--			<groupId>com.alibaba</groupId>-->
-<!--			<artifactId>druid-spring-boot-starter</artifactId>-->
-<!--			<version>${druid.version}</version>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>org.springframework</groupId>-->
-<!--			<artifactId>spring-jdbc</artifactId>-->
-<!--		</dependency>-->
+        <!--mybatis-plus依赖包-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis-plus-boot-starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-extension</artifactId>
+            <version>${mybatis-plus-boot-starter.version}</version>
+        </dependency>
 
 
-		<!-- 加入spring security spring security oauth2的处理 -->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.security.oauth</groupId>-->
-<!--			<artifactId>spring-security-oauth2</artifactId>-->
-<!--			<version>${security-oauth2.version}</version>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.security</groupId>-->
-<!--			<artifactId>spring-security-jwt</artifactId>-->
-<!--			<version>${security-jwt.version}</version>-->
-<!--		</dependency>-->
+        <!--监控sql日志-->
+        <!--		<dependency>-->
+        <!--			<groupId>org.bgee.log4jdbc-log4j2</groupId>-->
+        <!--			<artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>-->
+        <!--			<version>${log4jdbc.version}</version>-->
+        <!--		</dependency>-->
 
-		<!-- hutool java工具类库  -->
-		<dependency>
-			<groupId>cn.hutool</groupId>
-			<artifactId>hutool-core</artifactId>
-			<version>${hutool.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>cn.hutool</groupId>
-			<artifactId>hutool-all</artifactId>
-			<version>${hutool.version}</version>
-		</dependency>
+        <!--Mysql依赖包-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <!--		&lt;!&ndash; druid数据源驱动 &ndash;&gt;-->
+        <!--		<dependency>-->
+        <!--			<groupId>com.alibaba</groupId>-->
+        <!--			<artifactId>druid-spring-boot-starter</artifactId>-->
+        <!--			<version>${druid.version}</version>-->
+        <!--		</dependency>-->
 
-		<!-- fastjson 序列化工具-->
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>fastjson</artifactId>
-			<version>${fastjson.version}</version>
-		</dependency>
-
-		<!--使用 lombok 简化 Java 代码-->
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>${lombok-version}</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<!--apache读写配置文件-->
-		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-configuration2 -->
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-configuration2</artifactId>
-			<version>2.6</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
-		<dependency>
-			<groupId>commons-beanutils</groupId>
-			<artifactId>commons-beanutils</artifactId>
-			<version>1.9.4</version>
-		</dependency>
+        <!--		<dependency>-->
+        <!--			<groupId>org.springframework</groupId>-->
+        <!--			<artifactId>spring-jdbc</artifactId>-->
+        <!--		</dependency>-->
 
 
+        <!-- 加入spring security spring security oauth2的处理 -->
+        <!--		<dependency>-->
+        <!--			<groupId>org.springframework.security.oauth</groupId>-->
+        <!--			<artifactId>spring-security-oauth2</artifactId>-->
+        <!--			<version>${security-oauth2.version}</version>-->
+        <!--		</dependency>-->
+        <!--		<dependency>-->
+        <!--			<groupId>org.springframework.security</groupId>-->
+        <!--			<artifactId>spring-security-jwt</artifactId>-->
+        <!--			<version>${security-jwt.version}</version>-->
+        <!--		</dependency>-->
 
-		<!--IP地址地理-->
-		<!--https://gitee.com/lionsoul/ip2region/tree/v1.4-release/-->
-		<dependency>
-			<groupId>org.lionsoul</groupId>
-			<artifactId>ip2region</artifactId>
-			<version>1.7.2</version>
-		</dependency>
+        <!-- hutool java工具类库  -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-core</artifactId>
+            <version>${hutool.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool.version}</version>
+        </dependency>
 
-		<!--获取浏览器-->
-		<!-- https://mvnrepository.com/artifact/eu.bitwalker/UserAgentUtils -->
-		<dependency>
-			<groupId>eu.bitwalker</groupId>
-			<artifactId>UserAgentUtils</artifactId>
-			<version>1.21</version>
-		</dependency>
+        <!-- fastjson 序列化工具-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
 
+        <!--使用 lombok 简化 Java 代码-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok-version}</version>
+            <scope>provided</scope>
+        </dependency>
 
-		<!--二维码-->
-<!--		<dependency>-->
-<!--			<groupId>com.google.zxing</groupId>-->
-<!--			<artifactId>core</artifactId>-->
-<!--			<version>3.3.3</version>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>com.google.zxing</groupId>-->
-<!--			<artifactId>javase</artifactId>-->
-<!--			<version>2.1</version>-->
-<!--		</dependency>-->
-
-		<!--阿里云OSS-->
-<!--		<dependency>-->
-<!--			<groupId>com.aliyun.oss</groupId>-->
-<!--			<artifactId>aliyun-sdk-oss</artifactId>-->
-<!--			<version>2.8.3</version>-->
-<!--		</dependency>-->
-
-		<!--Swagger2 - RESTful API文档-->
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-			<version>${swagger.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
-			<version>${swagger.version}</version>
-		</dependency>
-
-
-
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.junit.vintage</groupId>
-					<artifactId>junit-vintage-engine</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-	</dependencies>
-
-	<build>
-		<plugins>
-			<!-- 打包时跳过测试 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<skip>true</skip>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+        <!--apache读写配置文件-->
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-configuration2 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-configuration2</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.4</version>
+        </dependency>
 
 
-	<repositories>
-		<repository>
-			<id>public</id>
-			<name>aliyun nexus</name>
-			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-		</repository>
-	</repositories>
+        <!--IP地址地理-->
+        <!--https://gitee.com/lionsoul/ip2region/tree/v1.4-release/-->
+        <dependency>
+            <groupId>org.lionsoul</groupId>
+            <artifactId>ip2region</artifactId>
+            <version>1.7.2</version>
+        </dependency>
 
-	<pluginRepositories>
-		<pluginRepository>
-			<id>public</id>
-			<name>aliyun nexus</name>
-			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
+        <!--获取浏览器-->
+        <!-- https://mvnrepository.com/artifact/eu.bitwalker/UserAgentUtils -->
+        <dependency>
+            <groupId>eu.bitwalker</groupId>
+            <artifactId>UserAgentUtils</artifactId>
+            <version>1.21</version>
+        </dependency>
+
+
+        <!--二维码-->
+        <!--		<dependency>-->
+        <!--			<groupId>com.google.zxing</groupId>-->
+        <!--			<artifactId>core</artifactId>-->
+        <!--			<version>3.3.3</version>-->
+        <!--		</dependency>-->
+        <!--		<dependency>-->
+        <!--			<groupId>com.google.zxing</groupId>-->
+        <!--			<artifactId>javase</artifactId>-->
+        <!--			<version>2.1</version>-->
+        <!--		</dependency>-->
+
+        <!--阿里云OSS-->
+        <!--		<dependency>-->
+        <!--			<groupId>com.aliyun.oss</groupId>-->
+        <!--			<artifactId>aliyun-sdk-oss</artifactId>-->
+        <!--			<version>2.8.3</version>-->
+        <!--		</dependency>-->
+
+        <!--Swagger2 - RESTful API文档-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- 打包时跳过测试 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+    <repositories>
+        <repository>
+            <id>public</id>
+            <name>aliyun nexus</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>public</id>
+            <name>aliyun nexus</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 
 </project>

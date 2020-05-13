@@ -8,10 +8,11 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 /**
-* OrganizationMapper
-* @author zed
-* @date 2020-01-16
-*/
+ * OrganizationMapper
+ *
+ * @author zed
+ * @date 2020-01-16
+ */
 @Mapper
 @Repository
 public interface OrganizationMapper extends BaseMapper<Organization> {

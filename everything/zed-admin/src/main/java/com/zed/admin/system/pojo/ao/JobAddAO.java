@@ -1,7 +1,6 @@
 package com.zed.admin.system.pojo.ao;
 
 import com.zed.common.validate.GroupAdd;
-import com.zed.common.validate.GroupEdit;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

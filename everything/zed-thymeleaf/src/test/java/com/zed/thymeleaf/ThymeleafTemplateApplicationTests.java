@@ -23,7 +23,7 @@ public class ThymeleafTemplateApplicationTests {
     }
 
     @Test
-    public void usrDir(){
+    public void usrDir() {
         System.out.println(System.getProperty("user.dir"));
     }
 
@@ -39,7 +39,7 @@ public class ThymeleafTemplateApplicationTests {
     @Test
     public void mkdirs() {
 
-        String outPath = System.getProperty("user.dir")+"generator\\";
+        String outPath = System.getProperty("user.dir") + "generator\\";
 
         String referencePackage = "com.zed";
 
@@ -64,19 +64,17 @@ public class ThymeleafTemplateApplicationTests {
         Context context = new Context();
 
 
-
         //修改 core和 referencePackage即可
 
 
         String core = "Account";
-        String referencePackage = "com.zed.thymeleaf.account"+".config";
+        String referencePackage = "com.zed.thymeleaf.account" + ".config";
 
         boolean firstDb = true;
 
         String humpCore = StringTools.upper2LowerHump(core);
         String upperCore = StringTools.upper2UpperUnderLine(core);
         String midLineName = StringTools.upper2LowerMidLine(core);
-
 
 
         context.setVariable("core", core);
@@ -120,8 +118,6 @@ public class ThymeleafTemplateApplicationTests {
         String application = "application.yml";
 
 
-
-
         //创建文件夹
 
 
@@ -135,7 +131,7 @@ public class ThymeleafTemplateApplicationTests {
         createFile(filePath, generatorDataSourceConfigurationFileName + suffix);
         createFile(filePath, generatorMybatisConfigurationFileName + suffix);
         createFile(filePath, generatorTxFileName + suffix);
-        createFile(outPath, humpCore+"-"+application);
+        createFile(outPath, humpCore + "-" + application);
 
 
         //生成
@@ -160,7 +156,7 @@ public class ThymeleafTemplateApplicationTests {
     }
 
 
-    private void createFile(String path,String fileName) {
+    private void createFile(String path, String fileName) {
         File file = new File(path, fileName);
 
         if (!file.exists()) {

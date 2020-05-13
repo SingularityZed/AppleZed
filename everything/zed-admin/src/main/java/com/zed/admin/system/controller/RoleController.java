@@ -7,15 +7,12 @@ import com.zed.admin.system.pojo.dto.RoleDTO;
 import com.zed.admin.system.pojo.vo.RoleVO;
 import com.zed.admin.system.service.RoleService;
 import com.zed.admin.system.verify.RoleVerify;
-import com.zed.admin.system.verify.UserVerify;
 import com.zed.common.base.PageParam;
 import com.zed.common.exception.handler.ResponseResult;
 import com.zed.common.utils.AutoMapperUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,14 +1,9 @@
 package com.zed.admin.system.verify;
 
 import com.zed.admin.constant.AdminConstant;
-import com.zed.admin.constant.AdminEnum;
-import com.zed.admin.enums.JobEnum;
 import com.zed.admin.system.pojo.dto.JobDTO;
 import com.zed.admin.system.pojo.dto.JobVerifyDTO;
-import com.zed.admin.system.pojo.dto.UserDTO;
-import com.zed.admin.system.pojo.dto.UserVerifyDTO;
 import com.zed.admin.system.service.JobService;
-import com.zed.admin.system.service.UserService;
 import com.zed.common.constant.StatusCode;
 import com.zed.common.exception.VerifyException;
 import lombok.extern.slf4j.Slf4j;

@@ -8,10 +8,11 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 /**
-* RoleMapper
-* @author zed
-* @date 2020-01-16
-*/
+ * RoleMapper
+ *
+ * @author zed
+ * @date 2020-01-16
+ */
 @Mapper
 @Repository
 public interface RoleMapper extends BaseMapper<Role> {

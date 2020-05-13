@@ -21,14 +21,12 @@ public interface MenuService extends IService<Menu> {
 
 
     /**
-     * 
-     * @param menuVOList 
+     * @param menuVOList
      * @return
      */
-    Map<String,Object> buildMenus(List<MenuVO> menuVOList);
-    
-    
-    
+    Map<String, Object> buildMenus(List<MenuVO> menuVOList);
+
+
     /**
      * 分页查询
      *
@@ -77,5 +75,5 @@ public interface MenuService extends IService<Menu> {
 
     List<MenuVO> buildTree(List<MenuDTO> menuDTOList);
 
- 
+
 }

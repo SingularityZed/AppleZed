@@ -27,6 +27,7 @@ public class ServiceException extends RuntimeException {
         super(msg);
         this.e = e;
     }
+
     /**
      * 通过code查缓存的数据结果
      *
@@ -36,6 +37,7 @@ public class ServiceException extends RuntimeException {
         super(code.toString());
         this.code = code;
     }
+
     public ServiceException(Integer code, String msg) {
         super(msg);
         this.code = code;
@@ -46,10 +48,12 @@ public class ServiceException extends RuntimeException {
         this.code = code;
         this.e = e;
     }
+
     public ServiceException(Integer code, String msg, String extraMag) {
         super(msg + StrUtil.COLON + extraMag);
         this.code = code;
     }
+
     public <T extends BaseEnum> ServiceException(T t) {
         super(t.getMessage());
         this.code = t.getValue();

@@ -4,7 +4,7 @@ package com.zed.common.constant;
  * @author zed
  * @date 2019/3/25 15:23
  **/
-public enum StatusCode implements BaseEnum{
+public enum StatusCode implements BaseEnum {
 
     /**
      * 成功

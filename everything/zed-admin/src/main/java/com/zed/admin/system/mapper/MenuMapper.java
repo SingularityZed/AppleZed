@@ -8,10 +8,11 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 /**
-* MenuMapper
-* @author zed
-* @date 2020-01-16
-*/
+ * MenuMapper
+ *
+ * @author zed
+ * @date 2020-01-16
+ */
 @Mapper
 @Repository
 public interface MenuMapper extends BaseMapper<Menu> {

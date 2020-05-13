@@ -1,9 +1,7 @@
 package com.zed.common.validate;
 
 
-import cn.hutool.core.util.ObjectUtil;
 import com.zed.common.constant.StatusCode;
-import com.zed.common.exception.DaoException;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -63,7 +61,6 @@ public class ValidationUtils {
 //        log.info( "校验信息是:" + validateType + "返回码是:" + code );
         return code;
     }
-
 
 
 }

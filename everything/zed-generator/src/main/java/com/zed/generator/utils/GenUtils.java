@@ -118,7 +118,7 @@ public class GenUtils {
      * @param columnInfos 表元数据
      * @param genConfig   生成代码的参数配置，如包路径，作者
      */
-    public static void generatorCode(GenConfig genConfig, String tableName,List<ColumnInfo> columnInfos) throws IOException {
+    public static void generatorCode(GenConfig genConfig, String tableName, List<ColumnInfo> columnInfos) throws IOException {
         Map<String, Object> map = new HashMap<>(64);
         map.put("package", genConfig.getPackagePath());
         map.put("moduleName", genConfig.getModuleName());

@@ -9,5 +9,4 @@ package com.zed.common.base;
 public class BaseController {
 
 
-
 }

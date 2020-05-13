@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * 列的数据信息
+ *
  * @author zed
  * @date 2019-01-02
  */

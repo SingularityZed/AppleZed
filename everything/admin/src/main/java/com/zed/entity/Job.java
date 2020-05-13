@@ -1,26 +1,26 @@
 package com.zed.domain;
 
 import lombok.Data;
-import javax.persistence.*;
+
 import java.sql.Timestamp;
-import java.io.Serializable;
 
 /**
-* Job
-* @author zed
-* @date 2020-01-16
-*/
+ * Job
+ *
+ * @author zed
+ * @date 2020-01-16
+ */
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @TableName(value = "job")
-public class Job  extends BaseEntity<Job>  {
+public class Job extends BaseEntity<Job> {
 
     @Column(name = "id")
     private Long id;
 
     /**
-     *   职位ID
+     * 职位ID
      */
     @Column(name = "id")
     private Long id;
@@ -29,7 +29,7 @@ public class Job  extends BaseEntity<Job>  {
     private String beanName;
 
     /**
-     *   商户ID
+     * 商户ID
      */
     @Column(name = "org_id")
     private Long orgId;
@@ -38,7 +38,7 @@ public class Job  extends BaseEntity<Job>  {
     private Timestamp createTime;
 
     /**
-     *   职位名称
+     * 职位名称
      */
     @Column(name = "name")
     private String name;
@@ -47,7 +47,7 @@ public class Job  extends BaseEntity<Job>  {
     private String cronExpression;
 
     /**
-     *   是否启用 1启用 0禁用
+     * 是否启用 1启用 0禁用
      */
     @Column(name = "enabled")
     private Boolean enabled;
@@ -56,7 +56,7 @@ public class Job  extends BaseEntity<Job>  {
     private Boolean isPause;
 
     /**
-     *   排序
+     * 排序
      */
     @Column(name = "sort")
     private Integer sort;
@@ -65,7 +65,7 @@ public class Job  extends BaseEntity<Job>  {
     private String jobName;
 
     /**
-     *   创建时间
+     * 创建时间
      */
     @Column(name = "create_time")
     private Timestamp createTime;
@@ -74,7 +74,7 @@ public class Job  extends BaseEntity<Job>  {
     private String methodName;
 
     /**
-     *   更新时间
+     * 更新时间
      */
     @Column(name = "update_time")
     private Timestamp updateTime;
@@ -83,7 +83,7 @@ public class Job  extends BaseEntity<Job>  {
     private String params;
 
     /**
-     *   创建者
+     * 创建者
      */
     @Column(name = "create_by")
     private String createBy;
@@ -92,19 +92,19 @@ public class Job  extends BaseEntity<Job>  {
     private String remark;
 
     /**
-     *   更新者
+     * 更新者
      */
     @Column(name = "update_by")
     private String updateBy;
 
     /**
-     *   备注
+     * 备注
      */
     @Column(name = "remark")
     private String remark;
 
     /**
-     *   删除标志 1已删除 0未删除
+     * 删除标志 1已删除 0未删除
      */
     @Column(name = "is_deleted")
     private Boolean isDeleted;

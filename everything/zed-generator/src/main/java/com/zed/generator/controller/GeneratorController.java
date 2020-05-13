@@ -47,9 +47,9 @@ public class GeneratorController {
     @ApiOperation("查询表内元数据")
     @GetMapping(value = "/columns/{database}/{tableName}")
     public ResponseEntity getColumns(PageParam pageParam,
-                                    @PathVariable String database,
-                                    @PathVariable String tableName) {
-        return new ResponseEntity<>(generatorService.getColumns(pageParam,database, tableName), HttpStatus.OK);
+                                     @PathVariable String database,
+                                     @PathVariable String tableName) {
+        return new ResponseEntity<>(generatorService.getColumns(pageParam, database, tableName), HttpStatus.OK);
     }
 
     @ApiOperation("生成代码")

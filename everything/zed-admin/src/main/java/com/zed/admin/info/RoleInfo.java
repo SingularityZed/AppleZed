@@ -1,14 +1,14 @@
 package com.zed.admin.info;
 
 import lombok.Data;
-import java.sql.Timestamp;
+
 import java.io.Serializable;
 import java.util.Date;
 
 
 /**
-* @author zed
-*/
+ * @author zed
+ */
 @Data
 public class RoleInfo implements Serializable {
 

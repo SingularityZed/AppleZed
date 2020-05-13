@@ -10,12 +10,12 @@ import lombok.Getter;
  * ManagerException
  *
  * @author zed
- *@date 2019/12/16 14:36
+ * @date 2019/12/16 14:36
  **/
 @Getter
 public class ManagerException extends RuntimeException {
 
-    private Integer code= StatusCode.SERVER_520000.getValue();
+    private Integer code = StatusCode.SERVER_520000.getValue();
 
     private Exception e;
 
@@ -27,6 +27,7 @@ public class ManagerException extends RuntimeException {
         super(msg);
         this.e = e;
     }
+
     /**
      * 通过code查缓存的数据结果
      *
@@ -36,6 +37,7 @@ public class ManagerException extends RuntimeException {
         super(code.toString());
         this.code = code;
     }
+
     public ManagerException(Integer code, String msg) {
         super(msg);
         this.code = code;
@@ -46,6 +48,7 @@ public class ManagerException extends RuntimeException {
         this.code = code;
         this.e = e;
     }
+
     public ManagerException(Integer code, String msg, String extraMag) {
         super(msg + StrUtil.COLON + extraMag);
         this.code = code;

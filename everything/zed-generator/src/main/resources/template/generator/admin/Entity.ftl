@@ -3,10 +3,10 @@ package ${package}.domain;
 import lombok.Data;
 import javax.persistence.*;
 <#if hasTimestamp>
-import java.sql.Timestamp;
+    import java.sql.Timestamp;
 </#if>
 <#if hasBigDecimal>
-import java.math.BigDecimal;
+    import java.math.BigDecimal;
 </#if>
 import java.io.Serializable;
 
@@ -23,13 +23,13 @@ public class ${className}  extends BaseEntity<${className}>  {
 <#if columns??>
     <#list columns as column>
 
-    <#if column.columnComment != ''>
-    /**
-     *   ${column.columnComment}
-     */
-    </#if>
-    @Column(name = "${column.columnName}"<#if column.columnKey = 'UNI'>,unique = true</#if><#if column.isNullable = 'NO' && column.columnKey != 'PRI'>,nullable = false</#if>)
-    private ${column.columnType} ${column.changeColumnName};
+        <#if column.columnComment != ''>
+            /**
+            *   ${column.columnComment}
+            */
+        </#if>
+        @Column(name = "${column.columnName}"<#if column.columnKey = 'UNI'>,unique = true</#if><#if column.isNullable = 'NO' && column.columnKey != 'PRI'>,nullable = false</#if>)
+        private ${column.columnType} ${column.changeColumnName};
     </#list>
 </#if>
 

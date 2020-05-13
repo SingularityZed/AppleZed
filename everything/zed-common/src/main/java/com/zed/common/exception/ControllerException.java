@@ -18,11 +18,15 @@ public class ControllerException extends RuntimeException {
 
     private Exception e;
 
-    public ControllerException(String msg){ super(msg);}
-    public ControllerException(String msg,Exception e){
+    public ControllerException(String msg) {
+        super(msg);
+    }
+
+    public ControllerException(String msg, Exception e) {
         super(msg);
         this.e = e;
     }
+
     /**
      * 通过code查缓存的数据结果
      *
@@ -32,16 +36,18 @@ public class ControllerException extends RuntimeException {
         super(code.toString());
         this.code = code;
     }
-    public ControllerException(Integer code,String msg){
+
+    public ControllerException(Integer code, String msg) {
         super(msg);
         this.code = code;
     }
 
-    public ControllerException(Integer code,String msg,Exception e){
+    public ControllerException(Integer code, String msg, Exception e) {
         super(msg);
         this.code = code;
         this.e = e;
     }
+
     public ControllerException(Integer code, String msg, String extraMag) {
         super(msg + StrUtil.COLON + extraMag);
         this.code = code;
