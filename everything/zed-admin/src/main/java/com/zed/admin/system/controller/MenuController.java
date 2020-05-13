@@ -4,9 +4,8 @@ import com.zed.admin.system.pojo.ao.MenuAddAO;
 import com.zed.admin.system.pojo.ao.MenuQueryAO;
 import com.zed.admin.system.pojo.ao.MenuUpdateAO;
 import com.zed.admin.system.pojo.dto.MenuDTO;
-import com.zed.admin.system.pojo.vo.MenuVO;
 import com.zed.admin.system.service.MenuService;
-import com.zed.common.base.PageParam;
+import com.zed.admin.system.verify.MenuVerify;
 import com.zed.common.exception.handler.ResponseResult;
 import com.zed.common.utils.AutoMapperUtil;
 import io.swagger.annotations.Api;
@@ -32,44 +31,35 @@ public class MenuController {
     @Autowired
     private MenuService menuService;
 
+    @Autowired
+    private MenuVerify menuVerify;
 
-    @GetMapping("/build")
     @ApiOperation("获取前端所需菜单")
+    @GetMapping("/build")
     public ResponseResult buildMenus() {
-        List<MenuDTO> menuDTOList = new ArrayList<>();
-        List<MenuVO> menuVOList = menuService.buildTree(menuDTOList);
-        return ResponseResult.succeed(menuService.buildMenus(menuVOList));
+        List<MenuDTO> dealList = new ArrayList<>();
+        List<MenuDTO> menuDTOList = (List<MenuDTO>) menuService.buildTree(dealList).get("content");
+        return ResponseResult.succeed(menuService.buildMenus(menuDTOList));
     }
 
 
-    //返回全部菜单
+    @ApiOperation("返回全部菜单")
     @GetMapping("list")
-    @ApiOperation("查询菜单")
-    public ResponseResult searchPage(PageParam pageParam, MenuQueryAO queryAO) {
-        MenuDTO dto = AutoMapperUtil.toPOJO(queryAO, MenuDTO.class);
-        return ResponseResult.succeed(menuService.getPageList(pageParam, dto));
+    public ResponseResult search() {
+        return ResponseResult.succeed(menuService.getMenuTree(menuService.findByPid(0L)));
     }
 
 
-//    @GetMapping("list")
-//    @ApiOperation("查询菜单")
-//    public ResponseResult searchPage( MenuQueryAO queryAO) {
-//        MenuDTO dto = AutoMapperUtil.toPOJO(queryAO, MenuDTO.class);
-//        return ResponseResult.succeed(menuService.getPageList( dto));
-//    }
-//
-//
-//
-//    @GetMapping("/{menuId}")
-//    @ApiOperation("查询Menu")
-//    public ResponseResult getMenu(@PathVariable Long menuId) {
-//        MenuVO vo = menuService.getMenuById(menuId);
-//        return ResponseResult.succeed(vo);
-//    }
+    @ApiOperation("查询菜单")
+    @GetMapping
+    public ResponseResult getMenu(MenuQueryAO queryAO) {
+        List<MenuDTO> menuDTOList = menuService.getMenuList(queryAO);
+        return ResponseResult.succeed(menuService.buildTree(menuDTOList));
+    }
 
 
+    @ApiOperation("新增菜单")
     @PostMapping("/add")
-    @ApiOperation("新增Menu")
     public ResponseResult add(@Validated @RequestBody MenuAddAO addAO) {
         // 转换
         MenuDTO dto = AutoMapperUtil.toPOJO(addAO, MenuDTO.class);
@@ -78,8 +68,9 @@ public class MenuController {
         return ResponseResult.succeed();
     }
 
+
+    @ApiOperation("修改菜单")
     @PutMapping("/update")
-    @ApiOperation("修改Menu")
     public ResponseResult update(@Validated @RequestBody MenuUpdateAO updateAO) {
         // 转换
         MenuDTO dto = AutoMapperUtil.toPOJO(updateAO, MenuDTO.class);
@@ -88,8 +79,8 @@ public class MenuController {
         return ResponseResult.succeed();
     }
 
+    @ApiOperation("删除菜单")
     @DeleteMapping("/{menuId}")
-    @ApiOperation("删除Menu")
     public ResponseResult delete(@PathVariable Long menuId) {
         menuService.deleteMenu(menuId);
         return ResponseResult.succeed();

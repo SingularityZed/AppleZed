@@ -3,6 +3,7 @@ package com.zed.common.utils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zed.common.constant.StatusCode;
 import com.zed.common.exception.DaoException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 
 import java.lang.reflect.Method;
@@ -17,6 +18,10 @@ import java.util.Optional;
  */
 @SuppressWarnings("unchecked")
 public class AutoMapperUtil {
+
+
+    private AutoMapperUtil(){
+    }
 
     /**
      * 实体转换
@@ -64,7 +69,7 @@ public class AutoMapperUtil {
     public static <S, T> List<T> mappingList(List<S> src, List<T> target, Class<?> targetClass) {
         for (S s : src) {
             try {
-                Object object = targetClass.newInstance();
+                Object object = targetClass.getDeclaredConstructor().newInstance();
                 target.add((T) object);
                 mapping(s, object);
             } catch (Exception ignored) {

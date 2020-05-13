@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -63,4 +64,7 @@ public class MenuDTO implements Serializable {
 
     // 更新时间
     private Date updateTime;
+
+
+    private List<MenuDTO> children;
 }

@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.List;
 
 
 /**
@@ -63,4 +64,20 @@ public class MenuVO implements Serializable {
 
     // 更新时间
     private Timestamp updateTime;
+
+    private MenuMetaVO meta;
+
+    private List<MenuVO> children;
+
+
+
+
+    private String redirect;
+
+
+    private Boolean alwaysShow;
+
+
+
+
 }
