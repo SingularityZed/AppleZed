@@ -13,7 +13,47 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/iot-dashboard',
   },
   {
-    title: 'FEATURES',
+    title: '系统管理',
+    icon: 'settings-2-outline',
+    link: '/pages/ui-features',
+    children: [
+      {
+        title: '用户管理',
+        icon: 'people',
+        link: '/pages/admin/user',
+      },
+      // {
+      //   title: '角色管理',
+      //   link: '/pages/admin/role',
+      // },
+      // {
+      //   title: '菜单管理',
+      //   link: '/pages/admin/menu',
+      // },
+      // {
+      //   title: '组织管理',
+      //   link: '/pages/admin/menu',
+      // },
+      //  {
+      //   title: '岗位管理',
+      //   link: '/pages/admin/menu',
+      // },
+      // {
+      //   title: '字典管理',
+      //   link: '/pages/admin/menu',
+      // },
+      // {
+      //   title: '任务调度',
+      //   link: '/pages/admin/menu',
+      // },
+      // {
+      //   title: '系统日志',
+      //   link: '/pages/admin/menu',
+      // },
+    ],
+  },
+  {
+    title: '特征工具',
     group: true,
   },
   {
