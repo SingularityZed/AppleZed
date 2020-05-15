@@ -3,6 +3,8 @@ generator
 
 基础RBAC 
 
+菜单角色等处理
+
 
 
 ## 重建项目
@@ -15,7 +17,7 @@ https://github.com/thymeleaf/thymeleaf/issues/395
 
 2020/01/16  
 2020/01/16  
- 
+
 
 #AppleZed
 
