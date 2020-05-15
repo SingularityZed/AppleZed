@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { SmartTableData } from '../data/smart-table';
+import { SysUserData } from '../../../data/admin-data/user/user';
 
 @Injectable()
-export class SmartTableService extends SmartTableData {
+export class SysUserService extends SysUserData {
 
   data = [{
     id: 1,

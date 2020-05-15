@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 
-import { SmartTableData } from '../../../@core/data/smart-table';
+import { SysUserData } from '../../../@core/data/admin-data/user/user';
 
 @Component({
   selector: 'user',
@@ -55,7 +55,7 @@ export class UserComponent {
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private service: SmartTableData) {
+  constructor(private service: SysUserData) {
     const data = this.service.getData();
     this.source.load(data);
   }
