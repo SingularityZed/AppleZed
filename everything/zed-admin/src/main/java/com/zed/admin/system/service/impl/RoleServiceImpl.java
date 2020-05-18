@@ -42,7 +42,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
      */
     @Override
     @Cacheable
-    public Page getPageList(PageParam pageParam, RoleDTO dto) {
+    public Page<RoleVO> getPageList(PageParam pageParam, RoleDTO dto) {
         Page<Role> page = pageParam.buildPage();
         Page<Role> rolePage = this.page(page, new LambdaQueryWrapper<Role>().eq(Role::getIsDeleted, false));
         return AutoMapperUtil.mappingPage(rolePage, RoleVO.class);

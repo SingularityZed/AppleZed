@@ -3,7 +3,6 @@ package com.zed.common.utils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zed.common.constant.StatusCode;
 import com.zed.common.exception.DaoException;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 
 import java.lang.reflect.Method;
@@ -20,7 +19,7 @@ import java.util.Optional;
 public class AutoMapperUtil {
 
 
-    private AutoMapperUtil(){
+    private AutoMapperUtil() {
     }
 
     /**
@@ -78,22 +77,25 @@ public class AutoMapperUtil {
         return target;
     }
 
+
     /**
      * page转换
      *
      * @param src
      * @param targetClass
-     * @param <targetClass>
+     * @param <S>
+     * @param <T>
      * @return
      */
-    public static <targetClass> Page mappingPage(Page src, Class<?> targetClass) {
-        Page<targetClass> target = new Page<>();
+    public static <S, T> Page<T> mappingPage(Page<S> src, Class<?> targetClass) {
+        Page<T> target = new Page<>();
         mapping(src, target);
-        List<targetClass> list = new ArrayList<>();
+        List<T> list = new ArrayList<>();
         mappingList(src.getRecords(), list, targetClass);
         target.setRecords(list);
         return target;
     }
+
 
     /*--start--业务方法----*/
 

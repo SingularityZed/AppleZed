@@ -23,7 +23,7 @@ public interface RoleService extends IService<Role> {
      * @param dto       分页参数
      * @return
      */
-    Page getPageList(PageParam pageParam, RoleDTO dto);
+    Page<RoleVO> getPageList(PageParam pageParam, RoleDTO dto);
 
     /**
      * 获取详情
