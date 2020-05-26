@@ -106,3 +106,4 @@ GlobalExceptionHandler捕获异常没有成功，可能是扫描Bean没成功，
 ## 版本管理
 POM版本管理，因为国内的版本以及Maven的版本落后，优先使用稳定版本
 暂时不需要分，具体再想办法
+2020/05/26 SpringBoot 2.2.2 升级到SpringBoot 2.3.0

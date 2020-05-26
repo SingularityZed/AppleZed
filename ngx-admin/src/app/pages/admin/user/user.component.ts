@@ -1,15 +1,14 @@
-import { Component } from '@angular/core';
-import { LocalDataSource } from 'ng2-smart-table';
+import { Component } from "@angular/core";
+import { LocalDataSource } from "ng2-smart-table";
 
-import { SysUserData } from '../../../@core/data/admin-data/user/user';
+import { SysUserData } from "../../../@core/data/admin-data/user";
 
 @Component({
-  selector: 'user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss'],
+  selector: "user",
+  templateUrl: "./user.component.html",
+  styleUrls: ["./user.component.scss"],
 })
 export class UserComponent {
-
   settings = {
     add: {
       addButtonContent: '<i class="nb-plus"></i>',
@@ -27,28 +26,28 @@ export class UserComponent {
     },
     columns: {
       id: {
-        title: 'ID',
-        type: 'number',
+        title: "ID",
+        type: "number",
       },
       firstName: {
-        title: 'First Name',
-        type: 'string',
+        title: "First Name",
+        type: "string",
       },
       lastName: {
-        title: 'Last Name',
-        type: 'string',
+        title: "Last Name",
+        type: "string",
       },
       username: {
-        title: 'Username',
-        type: 'string',
+        title: "Username",
+        type: "string",
       },
       email: {
-        title: 'E-mail',
-        type: 'string',
+        title: "E-mail",
+        type: "string",
       },
       age: {
-        title: 'Age',
-        type: 'number',
+        title: "Age",
+        type: "number",
       },
     },
   };
@@ -61,7 +60,7 @@ export class UserComponent {
   }
 
   onDeleteConfirm(event): void {
-    if (window.confirm('Are you sure you want to delete?')) {
+    if (window.confirm("Are you sure you want to delete?")) {
       event.confirm.resolve();
     } else {
       event.confirm.reject();
